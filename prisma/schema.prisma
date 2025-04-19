@@ -27,9 +27,18 @@ model User {
   password String   @db.VarChar(255)
   role     RoleUser @default(customer)
   orders   Order[]
+  sessions Session[]
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+}
+
+model Session {
+  id        String   @id
+  user_id    Int
+  expiresAt DateTime
+
+  user      User     @relation(references: [id], fields: [user_id], onDelete: Cascade)
 }
 
 model Brand {

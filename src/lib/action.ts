@@ -26,6 +26,7 @@ export async function SignIn(
   const existingUser = await db.user.findFirst({
     where: {
       email: validate.data.email,
+      role: "superadmin",
     },
   });
 
@@ -47,12 +48,12 @@ export async function SignIn(
   }
 
   const session = await lucia.createSession(existingUser.id, {});
-  const sessionCookie = await lucia.createSessionCookie(session.id);
+  const sessionCookie = lucia.createSessionCookie(session.id);
   cookies().set(
     sessionCookie.name,
     sessionCookie.value,
     sessionCookie.attributes
   );
 
-  redirect("/dashboard");
+  return redirect("/dashboard");
 }

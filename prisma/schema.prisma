@@ -33,11 +33,11 @@ model User {
 }
 
 model Session {
-  id        String   @id
-  user_id   Int
+  id        String    @id
+  userId    Int
   expiresAt DateTime
 
-  user User @relation(references: [id], fields: [user_id], onDelete: Cascade)
+  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
 }
 
 model Brand {

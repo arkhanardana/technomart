@@ -16,6 +16,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import FormLogout from "./form-logout";
 
 export default function Sidebar() {
   return (
@@ -72,10 +73,10 @@ export default function Sidebar() {
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Building className="h-5 w-5" />
-                <span className="sr-only">brands</span>
+                <span className="sr-only">Brands</span>
               </Link>
             </TooltipTrigger>
-            <TooltipContent side="right">brands</TooltipContent>
+            <TooltipContent side="right">Brands</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -93,7 +94,7 @@ export default function Sidebar() {
             <TooltipTrigger asChild>
               <Link
                 href="/dashboard/orders"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <ShoppingCart className="h-5 w-5" />
                 <span className="sr-only">Orders</span>
@@ -114,6 +115,7 @@ export default function Sidebar() {
             <TooltipContent side="right">Customers</TooltipContent>
           </Tooltip>
         </nav>
+        <FormLogout />
       </aside>
     </TooltipProvider>
   );

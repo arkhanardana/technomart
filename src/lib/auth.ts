@@ -1,6 +1,6 @@
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import db from "./db";
-import { Lucia } from "lucia";
+import { Lucia, User, Session } from "lucia";
 import { RoleUser } from "@prisma/client";
 import { cache } from "react";
 import { cookies } from "next/headers";
@@ -24,32 +24,40 @@ export const lucia = new Lucia(adapter, {
   },
 });
 
-export const getUser = cache(async () => {
-  const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
-  if (!sessionId) return null;
-  const { user, session } = await lucia.validateSession(sessionId);
-  try {
-    if (session && session.fresh) {
-      const sessionCookie = lucia.createSessionCookie(session.id);
-      cookies().set(
-        sessionCookie.name,
-        sessionCookie.value,
-        sessionCookie.attributes
-      );
+export const getUser = cache(
+  async (): Promise<
+    { user: User; session: Session } | { user: null; session: null }
+  > => {
+    const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
+    if (!sessionId) {
+      return {
+        user: null,
+        session: null,
+      };
     }
-    if (!session) {
-      const sessionCookie = lucia.createBlankSessionCookie();
-      cookies().set(
-        sessionCookie.name,
-        sessionCookie.value,
-        sessionCookie.attributes
-      );
-    }
-  } catch (error) {
-    console.log(error);
+
+    const result = await lucia.validateSession(sessionId);
+    try {
+      if (result.session && result.session.fresh) {
+        const sessionCookie = lucia.createSessionCookie(result.session.id);
+        cookies().set(
+          sessionCookie.name,
+          sessionCookie.value,
+          sessionCookie.attributes
+        );
+      }
+      if (!result.session) {
+        const sessionCookie = lucia.createBlankSessionCookie();
+        cookies().set(
+          sessionCookie.name,
+          sessionCookie.value,
+          sessionCookie.attributes
+        );
+      }
+    } catch {}
+    return result;
   }
-  return user;
-});
+);
 
 declare module "lucia" {
   interface Register {

@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
 import Sidebar from "./_components/sidebar";
 import Header from "./_components/header";
+import { getUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Dashboard Admin Technomart",
   description: "This is dashboard for admin",
 };
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { session } = await getUser();
+
+  if (!session) return redirect("/dashboard/sign-in");
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <Sidebar />

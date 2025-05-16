@@ -1,9 +1,9 @@
-import React from "react";
+import FormCategory from "../../_components/form-category";
 
 export default function CreateCategory() {
   return (
     <div>
-      <h1>Create Category</h1>
+      <FormCategory />
     </div>
   );
 }

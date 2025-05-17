@@ -11,3 +11,18 @@ export async function getCategories() {
     return [];
   }
 }
+
+export async function getCategoryById(id: string) {
+  try {
+    const category = await db.category.findFirst({
+      where: {
+        id: Number.parseInt(id),
+      },
+    });
+
+    return category;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}

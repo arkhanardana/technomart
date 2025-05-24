@@ -1,7 +1,7 @@
 import React from "react";
-import { getCategoryById } from "../../lib/data";
+import { getLocationById } from "../../lib/data";
 import { redirect } from "next/navigation";
-import FormCategory from "../../_components/form-category";
+import FormCategory from "../../_components/form-location";
 
 type Tparams = {
   id: string;
@@ -12,16 +12,16 @@ interface EditPageProps {
 }
 
 export default async function EditPage({ params }: EditPageProps) {
-  const data = await getCategoryById(params.id);
+  const data = await getLocationById(params.id);
 
   if (!data) {
-    return redirect("/dashboard/categories");
+    return redirect("/dashboard/locations");
   }
 
   return (
     <div>
       <h1>Edit Page</h1>
       <FormCategory data={data} type="EDIT" />
-    </div> 
+    </div>
   );
 }

@@ -14,18 +14,18 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useFormState, useFormStatus } from "react-dom";
-import { postCategory, updateCategory } from "../lib/actions"; 
+import { postLocation, updateLocation } from "../lib/actions";
 import { ActionResult } from "@/types";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Category } from "@prisma/client";
+import { Location } from "@prisma/client";
 
 const initialState: ActionResult = {
   error: "",
 };
 
-interface FormCategoryProps {
+interface FormLocationProps {
   type?: "ADD" | "EDIT";
-  data?: Category | null;
+  data?: Location | null;
 }
 
 function SubmitButton() {
@@ -38,15 +38,15 @@ function SubmitButton() {
   );
 }
 
-export default function FormCategory({
+export default function FormLocation({
   type = "ADD",
   data = null,
-}: FormCategoryProps) {
-  const updateCategoryWithId = (_: unknown, formData: FormData) =>
-    updateCategory(_, formData, data?.id);
+}: FormLocationProps) {
+  const updateLocationWithId = (_: unknown, formData: FormData) =>
+    updateLocation(_, formData, data?.id);
 
   const [state, formAction] = useFormState(
-    type === "ADD" ? postCategory : updateCategoryWithId,
+    type === "ADD" ? postLocation : updateLocationWithId,
     initialState
   );
 
@@ -54,21 +54,21 @@ export default function FormCategory({
     <div className="container mx-auto py-6">
       <div className="flex items-center gap-4 mb-6">
         <Button variant="outline" size="icon" className="h-7 w-7" asChild>
-          <Link href="/dashboard/categories">
+          <Link href="/dashboard/locations">
             <ChevronLeft className="h-4 w-4" />
             <span className="sr-only">Back</span>
           </Link>
         </Button>
         <h1 className="text-xl font-semibold tracking-tight truncate">
-          Category Controller
+          Location Controller
         </h1>
       </div>
 
       <div className="grid gap-6 max-w-2xl">
         <Card className="w-full mx-auto">
           <CardHeader>
-            <CardTitle>Category Form</CardTitle>
-            <CardDescription>Please input the category details</CardDescription>
+            <CardTitle>Location Form</CardTitle>
+            <CardDescription>Please input the location details</CardDescription>
           </CardHeader>
           <CardContent>
             {state.error !== "" && (

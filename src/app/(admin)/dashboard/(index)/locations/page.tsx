@@ -14,7 +14,8 @@ import { columns } from "./columns";
 import { getLocations } from "./lib/data";
 
 export default async function LocationsPage() {
-  const data = await getLocations();
+  const locations = await getLocations();
+
   return (
     <div className="space-y-4">
       <div className="text-right">
@@ -35,7 +36,7 @@ export default async function LocationsPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <DataTable columns={columns} data={data} />
+          <DataTable columns={columns} data={locations} />
         </CardContent>
       </Card>
     </div>

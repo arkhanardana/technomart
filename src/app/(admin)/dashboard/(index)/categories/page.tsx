@@ -14,7 +14,7 @@ import { columns } from "./columns";
 import { getCategories } from "./lib/data";
 
 export default async function CategoriesPage() {
-  const data = await getCategories();
+  const categories = await getCategories();
   return (
     <div className="space-y-4">
       <div className="text-right">
@@ -35,7 +35,7 @@ export default async function CategoriesPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <DataTable columns={columns} data={data} />
+          <DataTable columns={columns} data={categories} />
         </CardContent>
       </Card>
     </div>

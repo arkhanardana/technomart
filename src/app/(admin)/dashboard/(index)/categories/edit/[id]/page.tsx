@@ -3,15 +3,7 @@ import { getCategoryById } from "../../lib/data";
 import { redirect } from "next/navigation";
 import FormCategory from "../../_components/form-category";
 
-type Tparams = {
-  id: string;
-};
-
-interface EditPageProps {
-  params: Tparams;
-}
-
-export default async function EditPage({ params }: EditPageProps) {
+export default async function EditPage({ params }: { params: { id: string } }) {
   const data = await getCategoryById(params.id);
 
   if (!data) {
@@ -22,6 +14,6 @@ export default async function EditPage({ params }: EditPageProps) {
     <div>
       <h1>Edit Page</h1>
       <FormCategory data={data} type="EDIT" />
-    </div> 
+    </div>
   );
 }

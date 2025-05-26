@@ -14,9 +14,15 @@ import { AlertCircle, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
-import { postBrand } from "../lib/actions";
+import { postBrand, updateBrand } from "../lib/actions";
 import { initialState } from "@/types";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Brand } from "@prisma/client";
+
+interface FormBrandProps {
+  type?: "ADD" | "EDIT";
+  data?: Brand | null;
+}
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -27,8 +33,17 @@ function SubmitButton() {
   );
 }
 
-export default function FormBrand() {
-  const [state, formAction] = useFormState(postBrand, initialState);
+export default function FormBrand({
+  type = "ADD",
+  data = null,
+}: FormBrandProps) {
+  const updateBrandWithId = (_: unknown, formData: FormData) =>
+    updateBrand(_, formData, data?.id ?? 0);
+
+  const [state, formAction] = useFormState(
+    type === "ADD" ? postBrand : updateBrandWithId,
+    initialState
+  );
 
   return (
     <div className="container mx-auto py-6">
@@ -69,18 +84,12 @@ export default function FormBrand() {
                   type="text"
                   name="name"
                   className="w-full"
-                  // defaultValue={data?.name}
+                  defaultValue={data?.name}
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="logo">Logo</Label>
-                <Input
-                  id="logo"
-                  type="file"
-                  name="image"
-                  className="w-full"
-                  // defaultValue={data?.name}
-                />
+                <Input id="logo" type="file" name="image" className="w-full" />
               </div>
               <div className="flex flex-wrap gap-3 pt-4 sm:pt-6">
                 <Button variant="outline" type="button">

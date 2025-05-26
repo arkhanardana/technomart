@@ -34,7 +34,7 @@ export async function postBrand(
     console.log(error);
 
     return {
-      error: "Failed to insert brand",
+      error: "Failed to post brand",
     };
   }
   return redirect("/dashboard/brands");

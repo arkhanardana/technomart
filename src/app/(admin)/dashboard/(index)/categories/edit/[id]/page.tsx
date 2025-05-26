@@ -12,7 +12,6 @@ export default async function EditPage({ params }: { params: { id: string } }) {
 
   return (
     <div>
-      <h1>Edit Page</h1>
       <FormCategory data={data} type="EDIT" />
     </div>
   );

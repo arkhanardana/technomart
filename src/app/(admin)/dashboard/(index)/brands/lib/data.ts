@@ -9,3 +9,17 @@ export const getBrands = async () => {
     return [];
   }
 };
+
+export const getBrandById = async (id: string) => {
+  try {
+    const brand = await db.brand.findFirst({
+      where: {
+        id: Number.parseInt(id),
+      },
+    });
+    return brand;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};

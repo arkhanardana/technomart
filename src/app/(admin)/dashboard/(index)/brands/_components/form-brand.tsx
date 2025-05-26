@@ -15,18 +15,14 @@ import Link from "next/link";
 import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { postBrand } from "../lib/actions";
-import { ActionResult } from "@/types";
+import { initialState } from "@/types";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-
-const initialState: ActionResult = {
-  error: "",
-};
 
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
     <Button type="submit" disabled={pending}>
-      {pending ? "Loading..." : "Submit"}
+      {pending ? "Loading..." : "Save"}
     </Button>
   );
 }

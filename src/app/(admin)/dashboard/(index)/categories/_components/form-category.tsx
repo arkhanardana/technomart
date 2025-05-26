@@ -14,14 +14,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useFormState, useFormStatus } from "react-dom";
-import { postCategory, updateCategory } from "../lib/actions"; 
-import { ActionResult } from "@/types";
+import { postCategory, updateCategory } from "../lib/actions";
+import { initialState } from "@/types";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Category } from "@prisma/client";
-
-const initialState: ActionResult = {
-  error: "",
-};
 
 interface FormCategoryProps {
   type?: "ADD" | "EDIT";

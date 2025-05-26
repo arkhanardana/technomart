@@ -15,13 +15,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useFormState, useFormStatus } from "react-dom";
 import { postLocation, updateLocation } from "../lib/actions";
-import { ActionResult } from "@/types";
+import { initialState } from "@/types";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Location } from "@prisma/client";
-
-const initialState: ActionResult = {
-  error: "",
-};
 
 interface FormLocationProps {
   type?: "ADD" | "EDIT";
@@ -33,7 +29,7 @@ function SubmitButton() {
 
   return (
     <Button type="submit" disabled={pending}>
-      {pending ? "Loading..." : "Submit"}
+      {pending ? "Loading..." : "Save"}
     </Button>
   );
 }

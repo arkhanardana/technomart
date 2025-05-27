@@ -20,7 +20,7 @@ export async function postCategory(
     await db.category.create({ data: { name: validated.data.name } });
   } catch (error) {
     return {
-      error: "Failed to update category",
+      error: "Failed to insert category",
     };
   }
 

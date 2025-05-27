@@ -20,7 +20,7 @@ export async function postLocation(
     await db.location.create({ data: { name: validated.data.name } });
   } catch (error) {
     return {
-      error: "Failed to update location",
+      error: "Failed to insert location",
     };
   }
 

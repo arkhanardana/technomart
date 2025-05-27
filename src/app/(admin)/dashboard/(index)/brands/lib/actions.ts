@@ -47,8 +47,9 @@ export async function updateBrand(
 ): Promise<ActionResult> {
   const fileUpload = formData.get("image") as File;
 
-  const validate = schemaBrand.pick({ name: true }).safeParse({
+  const validate = schemaBrand.safeParse({
     name: formData.get("name"),
+    image: formData.get("image"),
   });
 
   if (!validate.success) {
@@ -86,6 +87,24 @@ export async function updateBrand(
     console.log(error);
     return {
       error: "Failed to update data",
+    };
+  }
+
+  return redirect("/dashboard/brands");
+}
+
+export async function deleteBrand(id: number) {
+  try {
+    await db.brand.delete({
+      where: {
+        id,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+
+    return {
+      error: "Failed to delete brand",
     };
   }
 

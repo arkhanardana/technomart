@@ -5,7 +5,6 @@ import { Brand } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { EditIcon, Trash2 } from "lucide-react";
 import Link from "next/link";
-// import { deleteLocation } from "./lib/actions";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,6 +17,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/supabase";
+import { deleteBrand } from "./lib/actions";
 
 export const columns: ColumnDef<Brand>[] = [
   {
@@ -75,7 +75,9 @@ export const columns: ColumnDef<Brand>[] = [
 
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Yes</AlertDialogAction>
+                <AlertDialogAction onClick={() => deleteBrand(brand.id)}>
+                  Yes
+                </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>

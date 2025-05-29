@@ -1,7 +1,7 @@
 "use server";
 
 import db from "@/lib/db";
-import { schemaBrand } from "@/lib/schema";
+import { schemaBrand, schemaUpdateBrand } from "@/lib/schema";
 import { uploadImage } from "@/lib/supabase";
 import { ActionResult } from "@/types";
 import { redirect } from "next/navigation";
@@ -47,9 +47,9 @@ export async function updateBrand(
 ): Promise<ActionResult> {
   const fileUpload = formData.get("image") as File;
 
-  const validate = schemaBrand.safeParse({
+  const validate = schemaUpdateBrand.safeParse({
     name: formData.get("name"),
-    image: formData.get("image"),
+    image: fileUpload,
   });
 
   if (!validate.success) {
@@ -69,7 +69,7 @@ export async function updateBrand(
 
   let filename = brand?.logo;
 
-  if (fileUpload.size > 0) {
+  if (fileUpload && fileUpload.size > 0) {
     filename = await uploadImage(fileUpload, "brands");
   }
 

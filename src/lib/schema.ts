@@ -36,3 +36,20 @@ export const schemaBrand = z.object({
       message: "Image is required",
     }),
 });
+
+export const schemaUpdateBrand = z.object({
+  name: z.string({ required_error: "Brand name is required" }).min(4, {
+    message: "Brand name should have min 4 characters",
+  }),
+  image: z
+    .union([
+      z.undefined(),
+      z.any().refine((file: File) => file.size === 0, {
+        message: "Only .jpg, .jpeg and .png formats are allowed",
+      }),
+      z.any().refine((file: File) => ALLOW_MIME_TYPES.includes(file.type), {
+        message: "Only .jpg, .jpeg and .png formats are allowed",
+      }),
+    ])
+    .optional(),
+});

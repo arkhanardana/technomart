@@ -28,3 +28,12 @@ export const uploadImage = async (
 
   return fileName;
 };
+
+export const deleteFile = async (
+  filename: string,
+  path: "brands" | "products" = "brands"
+) => {
+  await supabase.storage
+    .from("technomart")
+    .remove([`public/${path}/${filename}`]);
+};

@@ -2,7 +2,7 @@
 
 import db from "@/lib/db";
 import { schemaBrand, schemaUpdateBrand } from "@/lib/schema";
-import { uploadImage } from "@/lib/supabase";
+import { deleteFile, uploadImage } from "@/lib/supabase";
 import { ActionResult } from "@/types";
 import { redirect } from "next/navigation";
 
@@ -94,7 +94,24 @@ export async function updateBrand(
 }
 
 export async function deleteBrand(id: number) {
+  const brand = await db.brand.findFirst({
+    where: {
+      id,
+    },
+    select: {
+      logo: true,
+    },
+  });
+
+  if (!brand) {
+    return {
+      error: "Brand not found",
+    };
+  }
+
   try {
+    deleteFile(brand.logo, "brands");
+
     await db.brand.delete({
       where: {
         id,

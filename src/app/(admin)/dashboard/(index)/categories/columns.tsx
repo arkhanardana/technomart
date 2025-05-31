@@ -20,9 +20,10 @@ import {
 export const columns: ColumnDef<Category>[] = [
   {
     accessorKey: "name",
-    header: "Category name",
+    header: "Name",
   },
   {
+    header: "Actions",
     id: "actions",
     cell: ({ row }) => {
       const category = row.original;

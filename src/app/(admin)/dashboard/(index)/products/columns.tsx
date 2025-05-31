@@ -1,10 +1,14 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Brand } from "@prisma/client";
+import { getImageUrl } from "@/lib/supabase";
+import { dateFormat, rupiahFormat } from "@/lib/utils";
+import { StockProduct } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
-import { EditIcon, Trash2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { EditIcon, Trash2 } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,40 +19,80 @@ import {
   AlertDialogHeader,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import Image from "next/image";
-import { getImageUrl } from "@/lib/supabase";
-import { deleteBrand } from "./lib/actions";
 
-export const columns: ColumnDef<Brand>[] = [
+export type TProduct = {
+  id: number;
+  name: string;
+  image_url: string;
+  category_name: string;
+  brand_name: string;
+  price: number;
+  total_sales: number;
+  stock: StockProduct;
+  createdAt: Date;
+};
+
+export const columns: ColumnDef<TProduct>[] = [
   {
     accessorKey: "name",
     header: "Name",
     cell: ({ row }) => {
-      const brand = row.original;
+      const product = row.original;
 
       return (
         <div className="inline-flex items-center gap-5">
           <Image
-            src={getImageUrl(brand.logo)}
-            alt={brand.name}
+            src={getImageUrl(product.image_url)}
+            alt={product.name}
             width={80}
             height={80}
           />
-          <span>{brand.name}</span>
+          <span>{product.name}</span>
         </div>
       );
+    },
+  },
+  {
+    accessorKey: "price",
+    header: "Price",
+    cell: ({ row }) => {
+      const product = row.original;
+
+      return rupiahFormat(product.price);
+    },
+  },
+  {
+    accessorKey: "stock",
+    header: "Status",
+    cell: ({ row }) => {
+      const product = row.original;
+
+      return <Badge variant={"outline"}>{product.stock}</Badge>;
+    },
+  },
+  {
+    accessorKey: "total_sales",
+    header: "Total Sales",
+  },
+  {
+    accessorKey: "ceatedAt",
+    header: "Created At",
+    cell: ({ row }) => {
+      const product = row.original;
+
+      return dateFormat(product.createdAt);
     },
   },
   {
     header: "Actions",
     id: "actions",
     cell: ({ row }) => {
-      const brand = row.original;
+      const product = row.original;
 
       return (
         <div className="flex gap-2">
           <Button size="sm" asChild>
-            <Link href={`/dashboard/brands/edit/${brand.id}`}>
+            <Link href={`/dashboard/products/edit/${product.id}`}>
               <EditIcon className="w-4 h-4" />
               Edit
             </Link>
@@ -76,9 +120,7 @@ export const columns: ColumnDef<Brand>[] = [
 
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={() => deleteBrand(brand.id)}>
-                  Yes
-                </AlertDialogAction>
+                <AlertDialogAction>Yes</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>

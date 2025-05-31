@@ -20,9 +20,10 @@ import {
 export const columns: ColumnDef<Location>[] = [
   {
     accessorKey: "name",
-    header: "Location name",
+    header: "Name",
   },
   {
+    header: "Actions",
     id: "actions",
     cell: ({ row }) => {
       const location = row.original;

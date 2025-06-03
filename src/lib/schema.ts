@@ -60,9 +60,9 @@ export const schemaUpdateBrand = z.object({
 
 export const schemaProduct = z.object({
   name: z
-    .string({ required_error: "Category name is required" })
+    .string({ required_error: "Products name is required" })
     .trim()
-    .min(4, { message: "Category name should have min 4 characters" }),
+    .min(4, { message: "Products name should have min 4 characters" }),
   description: z
     .string({ required_error: "Description is required" })
     .trim()
@@ -71,4 +71,24 @@ export const schemaProduct = z.object({
   stock: z.string({ required_error: "Stock is required" }),
   category_id: z.string({ required_error: "Category is required" }),
   brand_id: z.string({ required_error: "Brand is required" }),
+  location_id: z.string({ required_error: "Location is required" }),
+  images: z
+    .any()
+    .refine((files: File[]) => files.length === 3, {
+      message: "Please upload 3 image product",
+    })
+    .refine(
+      (files: File[]) => {
+        let validate = false;
+
+        Array.from(files).find((file) => {
+          validate = ALLOW_MIME_TYPES.includes(file.type);
+        });
+
+        return validate;
+      },
+      {
+        message: "Uploaded file should image",
+      }
+    ),
 });

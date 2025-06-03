@@ -27,6 +27,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import UploadImages from "./upload-images";
+import { postProducts } from "../lib/actions";
 
 interface FormProductProps {
   children: React.ReactNode;
@@ -56,8 +57,10 @@ export default function FormProduct({
   //   initialState
   // );
 
+  const [state, formAction] = useFormState(postProducts, initialState);
+
   return (
-    <form action="">
+    <form action={formAction}>
       <div className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
         <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
           <div className="flex items-center gap-4">
@@ -90,13 +93,13 @@ export default function FormProduct({
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {/* {state.error !== "" && (
-                  <Alert variant="destructive" className="mb-4">
-                    <AlertCircle className="h-4 w-4" />
-                    <AlertTitle>Error</AlertTitle>
-                    <AlertDescription>{state.error}</AlertDescription>
-                  </Alert>
-                )} */}
+                  {state.error !== "" && (
+                    <Alert variant="destructive" className="mb-4">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertTitle>Error</AlertTitle>
+                      <AlertDescription>{state.error}</AlertDescription>
+                    </Alert>
+                  )}
 
                   <div className="grid gap-6">
                     <div className="grid gap-3">

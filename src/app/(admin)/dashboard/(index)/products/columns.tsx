@@ -42,7 +42,7 @@ export const columns: ColumnDef<TProduct>[] = [
       return (
         <div className="inline-flex items-center gap-5">
           <Image
-            src={getImageUrl(product.image_url)}
+            src={getImageUrl(product.image_url, "products")}
             alt={product.name}
             width={80}
             height={80}
@@ -75,7 +75,7 @@ export const columns: ColumnDef<TProduct>[] = [
     header: "Total Sales",
   },
   {
-    accessorKey: "ceatedAt",
+    accessorKey: "createdAt",
     header: "Created At",
     cell: ({ row }) => {
       const product = row.original;

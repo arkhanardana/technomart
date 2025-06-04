@@ -2,7 +2,7 @@
 
 import db from "@/lib/db";
 import { schemaProduct, schemaProductEdit } from "@/lib/schema";
-import { uploadImage } from "@/lib/supabase";
+import { deleteFile, uploadImage } from "@/lib/supabase";
 import { ActionResult } from "@/types";
 import { StockProduct } from "@prisma/client";
 import { redirect } from "next/navigation";
@@ -137,6 +137,44 @@ export async function updateProducts(
 
     return {
       error: "Failed to update product",
+    };
+  }
+
+  return redirect("/dashboard/products");
+}
+
+export async function deleteProduct(id: number): Promise<ActionResult> {
+  const product = await db.product.findFirst({
+    where: {
+      id,
+    },
+    select: {
+      id: true,
+      images: true,
+    },
+  });
+
+  if (!product) {
+    return {
+      error: "Product not found",
+    };
+  }
+
+  for (const image of product.images) {
+    await deleteFile(image, "products");
+  }
+
+  try {
+    await db.product.delete({
+      where: {
+        id,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+
+    return {
+      error: "Failed to delete product",
     };
   }
 

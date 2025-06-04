@@ -19,6 +19,7 @@ import {
   AlertDialogHeader,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { deleteProduct } from "./lib/actions";
 
 export type TProduct = {
   id: number;
@@ -120,7 +121,9 @@ export const columns: ColumnDef<TProduct>[] = [
 
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Yes</AlertDialogAction>
+                <AlertDialogAction onClick={() => deleteProduct(product.id)}>
+                  Yes
+                </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>

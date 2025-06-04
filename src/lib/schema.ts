@@ -92,3 +92,9 @@ export const schemaProduct = z.object({
       }
     ),
 });
+
+export const schemaProductEdit = schemaProduct
+  .extend({
+    id: z.number({ required_error: "Id is required" }),
+  })
+  .omit({ images: true });

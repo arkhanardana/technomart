@@ -109,13 +109,13 @@ export const columns: ColumnDef<TProduct>[] = [
             <AlertDialogContent>
               <AlertDialogHeader>
                 <h2 className="text-lg font-medium">
-                  Are you sure you want to delete this location?
+                  Are you sure you want to delete this product?
                 </h2>
               </AlertDialogHeader>
 
               <AlertDialogDescription>
                 This action cannot be undone. This will permanently delete the
-                location.
+                product.
               </AlertDialogDescription>
 
               <AlertDialogFooter>

@@ -65,13 +65,13 @@ export const columns: ColumnDef<Brand>[] = [
             <AlertDialogContent>
               <AlertDialogHeader>
                 <h2 className="text-lg font-medium">
-                  Are you sure you want to delete this location?
+                  Are you sure you want to delete this brand?
                 </h2>
               </AlertDialogHeader>
 
               <AlertDialogDescription>
                 This action cannot be undone. This will permanently delete the
-                location.
+                brand.
               </AlertDialogDescription>
 
               <AlertDialogFooter>

@@ -14,10 +14,9 @@ import { AlertCircle, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
-// import { postBrand, updateBrand } from "../lib/actions";
 import { initialState } from "@/types";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Brand } from "@prisma/client";
+import { Brand, Product } from "@prisma/client";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
@@ -27,12 +26,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import UploadImages from "./upload-images";
-import { postProducts } from "../lib/actions";
+import { postProducts, updateProducts } from "../lib/actions";
 
 interface FormProductProps {
   children: React.ReactNode;
   type?: "ADD" | "EDIT";
-  data?: Brand | null;
+  data?: Product | null;
 }
 
 function SubmitButton() {
@@ -49,15 +48,13 @@ export default function FormProduct({
   type = "ADD",
   data = null,
 }: FormProductProps) {
-  // const updateBrandWithId = (_: unknown, formData: FormData) =>
-  //   updateBrand(_, formData, data?.id ?? 0);
+  const updateProductsWithId = (_: unknown, formData: FormData) =>
+    updateProducts(_, formData, data?.id ?? 0);
 
-  // const [state, formAction] = useFormState(
-  //   type === "ADD" ? postBrand : updateBrandWithId,
-  //   initialState
-  // );
-
-  const [state, formAction] = useFormState(postProducts, initialState);
+  const [state, formAction] = useFormState(
+    type === "ADD" ? postProducts : updateProductsWithId,
+    initialState
+  );
 
   return (
     <form action={formAction}>
@@ -120,7 +117,7 @@ export default function FormProduct({
                         type="number"
                         name="price"
                         className="w-full"
-                        // defaultValue={Number(data?.price ?? 0)}
+                        defaultValue={Number(data?.price ?? 0)}
                       />
                     </div>
 
@@ -130,7 +127,7 @@ export default function FormProduct({
                         name="description"
                         id="description"
                         className="min-h-32 resize-none"
-                        // defaultValue={data?.description}
+                        defaultValue={data?.description}
                       />
                     </div>
                   </div>
@@ -155,7 +152,7 @@ export default function FormProduct({
                   <div className="grid gap-6">
                     <div className="grid gap-3">
                       <Label htmlFor="status">Status</Label>
-                      <Select name="stock">
+                      <Select name="stock" defaultValue={data?.stock}>
                         <SelectTrigger id="status" aria-label="Select status">
                           <SelectValue placeholder="Select status" />
                         </SelectTrigger>

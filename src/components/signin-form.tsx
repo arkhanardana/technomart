@@ -13,13 +13,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SignIn } from "@/lib/action";
 import { cn } from "@/lib/utils";
-import { ActionResult } from "@/types";
+import { initialState } from "@/types";
 import { AlertCircle } from "lucide-react";
 import { useFormState, useFormStatus } from "react-dom";
-
-const initialState: ActionResult = {
-  error: "",
-};
 
 function SubmitButton() {
   const { pending } = useFormStatus();

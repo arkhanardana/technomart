@@ -50,3 +50,17 @@ export async function getAllProducts() {
     return [];
   }
 }
+
+export async function getProductById(id: number) {
+  try {
+    const product = await db.product.findFirst({
+      where: {
+        id,
+      },
+    });
+    return product;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}

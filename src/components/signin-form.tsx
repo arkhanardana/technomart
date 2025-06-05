@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { SignIn } from "@/lib/action";
+import { signIn } from "@/lib/action";
 import { cn } from "@/lib/utils";
 import { initialState } from "@/types";
 import { AlertCircle } from "lucide-react";
@@ -31,7 +31,7 @@ export function SignInForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const [state, formAction] = useFormState(SignIn, initialState);
+  const [state, formAction] = useFormState(signIn, initialState);
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>

@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import Image from "next/image";
-import React from "react";
+import React, { Suspense } from "react";
+import ListCategory from "./_components/list-category";
 
 export default function CustomerLandingPage() {
   return (
@@ -159,10 +160,10 @@ export default function CustomerLandingPage() {
         id="content"
         className="container max-w-[1130px] mx-auto flex flex-col gap-[50px] pt-[50px] pb-[100px]"
       >
-        {/* <Suspense fallback={<span>Loading...</span>}>
+        <Suspense fallback={<span>Loading...</span>}>
           <ListCategory />
         </Suspense>
-        <Suspense fallback={<span>Loading...</span>}>
+        {/* <Suspense fallback={<span>Loading...</span>}>
           <ListProducts
             title={
               <>

@@ -37,9 +37,9 @@ export function SignInForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardTitle className="text-2xl">Login as Admin</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Enter your credentials to login your admin dashboard
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -50,7 +50,7 @@ export function SignInForm({
                 <Input
                   id="email"
                   type="email"
-                  placeholder="john@example.com"
+                  placeholder="admin@example.com"
                   required
                   name="email"
                 />
@@ -75,12 +75,6 @@ export function SignInForm({
                 </Alert>
               )}
               <SubmitButton />
-            </div>
-            <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
-              <a href="#" className="underline underline-offset-4">
-                Sign up
-              </a>
             </div>
           </form>
         </CardContent>

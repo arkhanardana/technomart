@@ -14,10 +14,11 @@ export default async function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { session } = await getUser();
+  const { session, user } = await getUser();
 
-  if (!session) return redirect("/dashboard/sign-in");
-
+  if (!session || user.role !== "superadmin") {
+    return redirect("/dashboard/sign-in");
+  }
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <Sidebar />

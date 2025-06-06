@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { Suspense } from "react";
 import ListCategory from "./_components/list-category";
 import ListProducts from "./_components/list-products";
+import ListBrands from "./_components/list-brands";
 
 export default function CustomerLandingPage() {
   return (
@@ -174,9 +175,9 @@ export default function CustomerLandingPage() {
           />
         </Suspense>
 
-        {/* <Suspense fallback={<span>Loading...</span>}>
+        <Suspense fallback={<span>Loading...</span>}>
           <ListBrands />
-        </Suspense> */}
+        </Suspense>
 
         <Suspense fallback={<span>Loading...</span>}>
           <ListProducts

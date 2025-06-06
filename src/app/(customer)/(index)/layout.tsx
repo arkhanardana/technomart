@@ -6,7 +6,9 @@ const poppins = Poppins({
   subsets: ["latin-ext"],
 });
 
-export default function CustomerLayout({ children }: { children: ReactNode }) {
+export default function CustomerLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
   return (
     <main>
       <div className={poppins.className}>{children}</div>

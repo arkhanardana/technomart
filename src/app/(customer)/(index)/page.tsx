@@ -2,10 +2,11 @@ import Navbar from "@/components/navbar";
 import Image from "next/image";
 import React, { Suspense } from "react";
 import ListCategory from "./_components/list-category";
+import ListProducts from "./_components/list-products";
 
 export default function CustomerLandingPage() {
   return (
-    <div className="container mx-auto">
+    <div>
       <header className="bg-[#EFF3FA] pt-[30px] pb-[50px]">
         <Navbar />
         <div className="container max-w-[1130px] mx-auto flex items-center justify-between gap-1 mt-[50px]">
@@ -163,29 +164,29 @@ export default function CustomerLandingPage() {
         <Suspense fallback={<span>Loading...</span>}>
           <ListCategory />
         </Suspense>
-        {/* <Suspense fallback={<span>Loading...</span>}>
+        <Suspense fallback={<span>Loading...</span>}>
           <ListProducts
             title={
-              <>
+              <span>
                 Most Picked <br /> Quality Products
-              </>
+              </span>
             }
           />
         </Suspense>
 
-        <Suspense fallback={<span>Loading...</span>}>
+        {/* <Suspense fallback={<span>Loading...</span>}>
           <ListBrands />
-        </Suspense>
+        </Suspense> */}
 
         <Suspense fallback={<span>Loading...</span>}>
           <ListProducts
             title={
-              <>
+              <span>
                 New Releases <br /> From Official Stores
-              </>
+              </span>
             }
           />
-        </Suspense> */}
+        </Suspense>
       </section>
     </div>
   );

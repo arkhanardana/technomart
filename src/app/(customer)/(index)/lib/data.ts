@@ -50,3 +50,27 @@ export async function getProducts() {
     return [];
   }
 }
+
+export async function getBrands() {
+  try {
+    const brands = await db.brand.findMany({
+      select: {
+        logo: true,
+        id: true,
+        name: true,
+      },
+    });
+
+    const response = brands.map((brand) => {
+      return {
+        ...brand,
+        logo: getImageUrl(brand.logo, "brands"),
+      };
+    });
+
+    return response;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}

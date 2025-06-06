@@ -12,12 +12,12 @@ export default async function ListBrands() {
         <h2 className="font-bold text-2xl leading-[34px]">
           Explore Our <br /> Popular Brands
         </h2>
-        <a
-          href="catalog.html"
+        <Link
+          href="#"
           className="p-[12px_24px] border border-[#E5E5E5] rounded-full font-semibold"
         >
           Explore All
-        </a>
+        </Link>
       </div>
       <div className="grid grid-cols-5 gap-[30px]">
         {brands.map((item) => (

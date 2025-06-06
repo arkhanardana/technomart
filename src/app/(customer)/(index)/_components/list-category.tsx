@@ -12,12 +12,12 @@ export default async function ListCategory() {
         <h2 className="font-bold text-2xl leading-[34px]">
           Browse Products <br /> by Categories
         </h2>
-        <a
-          href="catalog.html"
+        <Link
+          href="#"
           className="p-[12px_24px] border border-[#E5E5E5] rounded-full font-semibold"
         >
           Explore All
-        </a>
+        </Link>
       </div>
       <div className="grid grid-cols-4 gap-[30px]">
         {categories.map((item) => (

@@ -95,10 +95,6 @@ export default function SignInPage() {
                 className="appearance-none outline-none w-full placeholder:text-[#616369] placeholder:font-normal font-semibold text-black"
                 placeholder="Write your password"
               />
-              {/* <button type="submit" className="reveal-password flex shrink-0">
-                            <img src="./assets/icons/eye.svg" alt="icon" />
-              </button> */}
-
               <button
                 type="button"
                 className="flex shrink-0"

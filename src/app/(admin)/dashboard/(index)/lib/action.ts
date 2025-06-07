@@ -5,7 +5,7 @@ import { ActionResult } from "@/types";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export async function Logout(): Promise<ActionResult> {
+export async function signOut(): Promise<ActionResult> {
   const { session } = await getUser();
 
   if (!session) {

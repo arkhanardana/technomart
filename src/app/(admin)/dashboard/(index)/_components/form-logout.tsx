@@ -1,6 +1,6 @@
 "use client";
 
-import { ActionResult } from "@/types";
+import { initialState } from "@/types";
 import {
   Tooltip,
   TooltipTrigger,
@@ -9,10 +9,6 @@ import {
 import { LogOut } from "lucide-react";
 import { useFormState } from "react-dom";
 import { signOut } from "../lib/action";
-
-const initialState: ActionResult = {
-  error: "",
-};
 
 export default function FormLogout() {
   const [state, formAction] = useFormState(signOut, initialState);

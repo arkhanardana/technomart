@@ -5,6 +5,7 @@ import FilterPrice from "./_components/filter-price";
 import FilterBrands from "./_components/filter-brands";
 import FilterLocation from "./_components/filter-location";
 import FilterCategory from "./_components/filter-category";
+import FilterStock from "./_components/filter-stock";
 
 export default function CatalogsPage() {
   return (
@@ -24,7 +25,7 @@ export default function CatalogsPage() {
           <h2 className="font-bold text-2xl leading-[34px]">Filters</h2>
           <FilterPrice />
           <hr className="border-[#E5E5E5]" />
-          {/* <FilterStock /> */}
+          <FilterStock />
           <hr className="border-[#E5E5E5]" />
           <FilterBrands />
           <hr className="border-[#E5E5E5]" />

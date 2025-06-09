@@ -6,6 +6,7 @@ import FilterBrands from "./_components/filter-brands";
 import FilterLocation from "./_components/filter-location";
 import FilterCategory from "./_components/filter-category";
 import FilterStock from "./_components/filter-stock";
+import ProductListing from "./_components/product-listing";
 
 export default function CatalogsPage() {
   return (
@@ -35,7 +36,7 @@ export default function CatalogsPage() {
         </form>
         <div className="w-[780px] flex flex-col bg-white p-[30px] gap-[30px] h-fit border border-[#E5E5E5] rounded-[30px]">
           <h2 className="font-bold text-2xl leading-[34px]">Products</h2>
-          {/* <ProductListing /> */}
+          <ProductListing />
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { fetchProducts } from "../lib/data";
+import { postProducts } from "../lib/data";
 import CardProduct from "../../_components/card-product";
 import { useFilter } from "@/hooks/useFilter";
 
@@ -10,7 +10,7 @@ export default function ProductListing() {
   const { filter } = useFilter();
   const { data, isLoading } = useQuery({
     queryKey: ["product-listing", filter],
-    queryFn: () => fetchProducts(filter),
+    queryFn: () => postProducts(filter),
   });
 
   if (isLoading) {

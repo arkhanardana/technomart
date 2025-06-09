@@ -1,7 +1,7 @@
 import { TFilter } from "@/hooks/useFilter";
 import { TProduct } from "@/types";
 
-export async function fetchProducts(body?: TFilter): Promise<TProduct[]> {
+export async function postProducts(body?: TFilter): Promise<TProduct[]> {
   try {
     const res = await fetch("/api/catalog", {
       method: "POST",

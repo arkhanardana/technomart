@@ -3,6 +3,7 @@ import React, { Suspense } from "react";
 import { getProductsDetails } from "../lib/data";
 import CarouselImages from "../_components/carousel-images";
 import ListProducts from "../../_components/list-products";
+import PriceInfo from "../_components/price-info";
 
 export default async function DetailProduct({
   params,
@@ -10,6 +11,7 @@ export default async function DetailProduct({
   params: { id: string };
 }) {
   const product = await getProductsDetails(Number.parseInt(params.id));
+
   return (
     <div className="min-h-[1000px]">
       <header className="bg-[#EFF3FA] pt-[30px] h-[480px] -mb-[310px]">
@@ -58,6 +60,7 @@ export default async function DetailProduct({
       </div>
       <CarouselImages images={product?.images} />
 
+      <PriceInfo />
       <div
         id="recommedations"
         className="container max-w-[1130px] mx-auto flex flex-col gap-[30px] pb-[100px] mt-[70px]"

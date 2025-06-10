@@ -11,6 +11,7 @@ export default function CarouselImages({ images }: CarouselImagesProps) {
   return (
     <div id="details-images" className="overflow-x-hidden mt-[30px]">
       <Flickity
+        className="focus:outline-none"
         options={{
           cellAlign: "left",
           contain: true,

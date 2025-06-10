@@ -93,7 +93,7 @@ export async function updateBrand(
   return redirect("/dashboard/brands");
 }
 
-export async function deleteBrand(id: number) {
+export async function deleteBrand(id: number): Promise<ActionResult> {
   const brand = await db.brand.findFirst({
     where: {
       id,

@@ -77,7 +77,7 @@ export default function FormCategory({
               </div>
             )}
 
-            <form className="space-y2" action={formAction}>
+            <form className="space-y-2" action={formAction}>
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
                 <Input

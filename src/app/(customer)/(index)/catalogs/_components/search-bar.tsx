@@ -54,8 +54,6 @@ export default function SearchBar() {
       >
         <input
           type="text"
-          id=""
-          name=""
           className="appearance-none outline-none w-full placeholder:text-[#616369] placeholder:font-normal font-semibold text-black"
           placeholder="Search product by name, brand, category"
           onChange={(e) => {

@@ -1,3 +1,5 @@
+"use server";
+
 import db from "@/lib/db";
 import { getImageUrl } from "@/lib/supabase";
 import { redirect } from "next/navigation";

@@ -1,13 +1,39 @@
+"use client";
+import { useCart } from "@/hooks/useCart";
+import { rupiahFormat } from "@/lib/utils";
+import { TCart, TProduct } from "@/types";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-export default function PriceInfo() {
+interface PriceInfoProps {
+  item: TProduct;
+  isLogin: boolean;
+}
+
+export default function PriceInfo({ item, isLogin }: PriceInfoProps) {
+  const { addProduct } = useCart();
+  const router = useRouter();
+
+  const checkOut = () => {
+    const newCart: TCart = {
+      ...item,
+      quantity: 1,
+    };
+
+    addProduct(newCart);
+
+    router.push("/carts");
+  };
+
   return (
     <div className="w-[302px] flex flex-col shrink-0 gap-5 h-fit">
       <div className="w-full bg-white border border-[#E5E5E5] flex flex-col gap-[30px] p-[30px] rounded-3xl">
         <div className="flex flex-col gap-1">
           <p className="font-semibold">Brand New</p>
-          <p className="font-bold text-[28px] leading-[48px]">Rp. 10.000.000</p>
+          <p className="font-bold text-[28px] leading-[48px]">
+            {rupiahFormat(item.price)}
+          </p>
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
@@ -43,9 +69,9 @@ export default function PriceInfo() {
         </div>
         <div className="flex flex-col gap-3">
           <button
-            // disabled={!isLogIn}
+            disabled={!isLogin}
             type="button"
-            // onClick={checkout}
+            onClick={checkOut}
             className="p-[12px_24px] bg-[#0D5CD7] rounded-full text-center font-semibold text-white disabled:opacity-60"
           >
             Add to Cart

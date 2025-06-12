@@ -20,7 +20,7 @@ export default async function DetailProduct({
   }
 
   return (
-    <div className="min-h-[1000px]">
+    <section>
       <header className="bg-[#EFF3FA] pt-[30px] h-[480px] -mb-[310px]">
         <Navbar />
       </header>
@@ -338,6 +338,6 @@ export default async function DetailProduct({
           />
         </Suspense>
       </div>
-    </div>
+    </section>
   );
 }

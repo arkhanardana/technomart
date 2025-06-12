@@ -7,7 +7,7 @@ import ListBrands from "./_components/list-brands";
 
 export default function CustomerLandingPage() {
   return (
-    <div>
+    <section>
       <header className="bg-[#EFF3FA] pt-[30px] pb-[50px]">
         <Navbar />
         <div className="container max-w-[1130px] mx-auto flex items-center justify-between gap-1 mt-[50px]">
@@ -189,6 +189,6 @@ export default function CustomerLandingPage() {
           />
         </Suspense>
       </section>
-    </div>
+    </section>
   );
 }

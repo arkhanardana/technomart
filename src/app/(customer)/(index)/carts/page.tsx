@@ -1,5 +1,8 @@
 import Navbar from "@/components/navbar";
+import Link from "next/link";
 import React from "react";
+import CartProducts from "./_components/cart-products";
+import CheckOutForm from "./_components/checkout-form";
 
 export default function CartsPage() {
   return (
@@ -13,21 +16,32 @@ export default function CartsPage() {
       >
         <div className="flex flex-col gap-5">
           <div className="flex gap-5 items-center">
-            <a className="page text-sm text-[#6A7789] last-of-type:text-black">
+            <Link
+              href={"#"}
+              className="page text-sm text-[#6A7789] last-of-type:text-black"
+            >
               Shop
-            </a>
+            </Link>
             <span className="text-sm text-[#6A7789]">/</span>
-            <a className="page text-sm text-[#6A7789] last-of-type:text-black">
+            <Link
+              href={"#"}
+              className="page text-sm text-[#6A7789] last-of-type:text-black"
+            >
               Browse
-            </a>
+            </Link>
             <span className="text-sm text-[#6A7789]">/</span>
-            <a className="page text-sm text-[#6A7789] last-of-type:text-black">
+            <Link
+              href={"#"}
+              className="page text-sm text-[#6A7789] last-of-type:text-black"
+            >
               Carts
-            </a>
+            </Link>
           </div>
           <h1 className="font-bold text-4xl leading-9">My Shopping Cart</h1>
         </div>
       </div>
+      <CartProducts />
+      <CheckOutForm />
     </div>
   );
 }

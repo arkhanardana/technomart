@@ -1,10 +1,44 @@
-import React from "react";
+"use client";
+import { useCart } from "@/hooks/useCart";
+import { rupiahFormat } from "@/lib/utils";
+import React, { useMemo } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import { postOrder } from "../lib/actions";
+import { initialState } from "@/types";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="p-[12px_24px] bg-[#0D5CD7] rounded-full text-center font-semibold text-white"
+    >
+      {pending ? "Checkout with xendit..." : "Checkout Now"}
+    </button>
+  );
+}
 
 export default function CheckOutForm() {
+  const { products } = useCart();
+
+  const grandTotal = useMemo(() => {
+    return products.reduce(
+      (prev, curr) => prev + curr.price * curr.quantity,
+      0
+    );
+  }, [products]);
+
+  const postOrderParams = (_: unknown, formData: FormData) =>
+    postOrder(_, formData, grandTotal, products);
+
+  const [state, formAction] = useFormState(postOrderParams, initialState);
   return (
     <div>
       <form
-        action={""}
+        action={formAction}
         id="checkout-info"
         className="container max-w-[1130px] mx-auto flex justify-between gap-5 mt-[50px] pb-[100px]"
       >
@@ -12,7 +46,16 @@ export default function CheckOutForm() {
           <h2 className="font-bold text-2xl leading-[34px] pt-16">
             Your Shipping Address
           </h2>
-          <div className="flex flex-col gap-5 p-[30px] rounded-3xl border border-[#E5E5E5] bg-white">
+          <div className="flex flex-col gap-4 p-[30px] rounded-3xl border border-[#E5E5E5] bg-white">
+            {state.error !== "" && (
+              <div className="pb-2">
+                <Alert variant="destructive">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertTitle>Error</AlertTitle>
+                  <AlertDescription>{state.error}</AlertDescription>
+                </Alert>
+              </div>
+            )}
             <div className="flex items-center gap-[10px] rounded-full border border-[#E5E5E5] p-[12px_20px] focus-within:ring-2 focus-within:ring-[#FFC736] transition-all duration-300">
               <div className="flex shrink-0">
                 <img src="assets/icons/profile-circle.svg" alt="icon" />
@@ -77,7 +120,6 @@ export default function CheckOutForm() {
                 className="appearance-none outline-none w-full placeholder:text-[#616369] placeholder:font-normal font-semibold text-black resize-none"
                 rows={6}
                 placeholder="Additional notes for courier"
-                required
               />
             </div>
             <div className="flex items-center gap-[10px] rounded-full border border-[#E5E5E5] p-[12px_20px] focus-within:ring-2 focus-within:ring-[#FFC736] transition-all duration-300">
@@ -124,7 +166,7 @@ export default function CheckOutForm() {
                   </div>
                   <p>Sub Total</p>
                 </div>
-                <p className="font-semibold">{""}</p>
+                <p className="font-semibold">{rupiahFormat(grandTotal)}</p>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -166,11 +208,11 @@ export default function CheckOutForm() {
             <div className="flex flex-col gap-1">
               <p className="font-semibold">Grand Total</p>
               <p className="font-bold text-[32px] leading-[48px] underline text-[#0D5CD7]">
-                {""}
+                {rupiahFormat(grandTotal)}
               </p>
             </div>
             <div className="flex flex-col gap-3">
-              {/* <SubmitButton /> */}
+              <SubmitButton />
               <a
                 href=""
                 className="p-[12px_24px] bg-white rounded-full text-center font-semibold border border-[#E5E5E5]"

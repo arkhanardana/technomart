@@ -1,4 +1,5 @@
 "use client";
+
 import { useCart } from "@/hooks/useCart";
 import { rupiahFormat } from "@/lib/utils";
 import React from "react";
@@ -7,10 +8,7 @@ export default function CartProducts() {
   const { products, decQuantity, incQuantity, removeProduct } = useCart();
 
   return (
-    <div
-      id="cart"
-      className="container max-w-[1130px] mx-auto flex flex-col gap-5 mt-[50px]"
-    >
+    <div id="cart" className="container max-w-[1130px] mx-auto flex flex-col gap-5 mt-[50px]">
       {products.map((cart) => (
         <div
           key={cart.id + cart.name}
@@ -18,11 +16,7 @@ export default function CartProducts() {
         >
           <div className="flex items-center w-[340px] gap-5">
             <div className="w-[120px] h-[70px] flex shrink-0 overflow-hidden items-center justify-center">
-              <img
-                src={cart.image_url}
-                className="w-full h-full object-contain"
-                alt=""
-              />
+              <img src={cart.image_url} className="w-full h-full object-contain" alt="" />
             </div>
             <div className="flex flex-col gap-1">
               <p className="font-semibold leading-[22px]">{cart.name}</p>
@@ -31,9 +25,7 @@ export default function CartProducts() {
           </div>
           <div className="w-[150px] flex flex-col gap-1">
             <p className="text-sm text-[#616369]">Price</p>
-            <p className="font-semibold text-[#0D5CD7] leading-[22px]">
-              {rupiahFormat(cart.price)}
-            </p>
+            <p className="font-semibold text-[#0D5CD7] leading-[22px]">{rupiahFormat(cart.price)}</p>
           </div>
           <div className="w-[120px] flex flex-col gap-1">
             <p className="text-sm text-[#616369]">Quantity</p>
@@ -41,27 +33,20 @@ export default function CartProducts() {
               <button
                 type="button"
                 onClick={() => decQuantity(cart.id)}
-                className="w-6 h-6 flex shrink-0"
+                disabled={cart.quantity === 1}
+                className="w-6 h-6 flex shrink-0 disabled:opacity-50"
               >
                 <img src="assets/icons/minus-cirlce.svg" alt="minus" />
               </button>
-              <p className="text-[#0D5CD7] font-semibold leading-[22px]">
-                {cart.quantity}
-              </p>
-              <button
-                type="button"
-                onClick={() => incQuantity(cart.id)}
-                className="w-6 h-6 flex shrink-0"
-              >
+              <p className="text-[#0D5CD7] font-semibold leading-[22px]">{cart.quantity}</p>
+              <button type="button" onClick={() => incQuantity(cart.id)} className="w-6 h-6 flex shrink-0">
                 <img src="assets/icons/add-circle.svg" alt="plus" />
               </button>
             </div>
           </div>
           <div className="w-[150px] flex flex-col gap-1">
             <p className="text-sm text-[#616369]">Total</p>
-            <p className="font-semibold text-[#0D5CD7] leading-[22px]">
-              {rupiahFormat(cart.price * cart.quantity)}
-            </p>
+            <p className="font-semibold text-[#0D5CD7] leading-[22px]">{rupiahFormat(cart.price * cart.quantity)}</p>
           </div>
           <button
             type="button"

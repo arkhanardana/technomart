@@ -16,10 +16,7 @@ export const useCart = create<CartState>()(
       products: [],
       addProduct: (cart) =>
         set({
-          products: [
-            ...get().products.filter((item) => item.id !== cart.id),
-            cart,
-          ],
+          products: [...get().products.filter((item) => item.id !== cart.id), cart],
         }),
       incQuantity: (id) => {
         const newProducts = get().products.map((item) => {

@@ -10,11 +10,7 @@ interface FilterCheckboxProps {
   type: "stock" | "brand" | "location" | "category";
 }
 
-export default function FilterCheckbox({
-  id,
-  value,
-  type,
-}: FilterCheckboxProps) {
+export default function FilterCheckbox({ id, value, type }: FilterCheckboxProps) {
   const { filter, setFilter } = useFilter();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,32 +30,22 @@ export default function FilterCheckbox({
       case "brand":
         if (e.target.checked) {
           setFilter({
-            brands: [
-              ...(filter?.brands ?? []),
-              Number.parseInt(e.target.value),
-            ],
+            brands: [...(filter?.brands ?? []), Number.parseInt(e.target.value)],
           });
         } else {
           setFilter({
-            brands: filter.brands?.filter(
-              (value) => value !== Number.parseInt(e.target.value)
-            ),
+            brands: filter.brands?.filter((value) => value !== Number.parseInt(e.target.value)),
           });
         }
 
       case "category":
         if (e.target.checked) {
           setFilter({
-            categories: [
-              ...(filter?.categories ?? []),
-              Number.parseInt(e.target.value),
-            ],
+            categories: [...(filter?.categories ?? []), Number.parseInt(e.target.value)],
           });
         } else {
           setFilter({
-            categories: filter.categories?.filter(
-              (value) => value !== Number.parseInt(e.target.value)
-            ),
+            categories: filter.categories?.filter((value) => value !== Number.parseInt(e.target.value)),
           });
         }
       default:
@@ -67,16 +53,11 @@ export default function FilterCheckbox({
       case "location":
         if (e.target.checked) {
           setFilter({
-            locations: [
-              ...(filter?.locations ?? []),
-              Number.parseInt(e.target.value),
-            ],
+            locations: [...(filter?.locations ?? []), Number.parseInt(e.target.value)],
           });
         } else {
           setFilter({
-            locations: filter.locations?.filter(
-              (value) => value !== Number.parseInt(e.target.value)
-            ),
+            locations: filter.locations?.filter((value) => value !== Number.parseInt(e.target.value)),
           });
         }
         break;
@@ -84,10 +65,7 @@ export default function FilterCheckbox({
   };
 
   return (
-    <label
-      htmlFor={id + value}
-      className="font-semibold flex items-center gap-3"
-    >
+    <label htmlFor={id + value} className="font-semibold flex items-center gap-3">
       <input
         id={id + value}
         type="checkbox"

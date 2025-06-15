@@ -17,3 +17,7 @@ export type TProduct = {
 export type TCart = TProduct & {
   quantity: number;
 };
+
+export type Params<T extends Record<string, string>> = {
+  params: T;
+};

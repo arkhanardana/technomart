@@ -13,8 +13,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Params } from "@/types";
 
-export default async function EditPage({ params }: { params: { id: string } }) {
+export default async function EditPage({ params }: Params<{ id: string }>) {
   const product = await getProductById(Number.parseInt(params.id));
   const brands = await getBrands();
   const categories = await getCategories();
@@ -28,10 +29,7 @@ export default async function EditPage({ params }: { params: { id: string } }) {
     <FormProduct type="EDIT" data={product}>
       <div className="grid gap-3">
         <Label htmlFor="category">Category</Label>
-        <Select
-          name="category_id"
-          defaultValue={product.category_id.toString()}
-        >
+        <Select name="category_id" defaultValue={product.category_id.toString()}>
           <SelectTrigger id="category" aria-label="Select category">
             <SelectValue placeholder="Select category" />
           </SelectTrigger>
@@ -61,10 +59,7 @@ export default async function EditPage({ params }: { params: { id: string } }) {
       </div>
       <div className="grid gap-3">
         <Label htmlFor="location_id">Location</Label>
-        <Select
-          name="location_id"
-          defaultValue={product.location_id.toString()}
-        >
+        <Select name="location_id" defaultValue={product.location_id.toString()}>
           <SelectTrigger id="location" aria-label="Select location">
             <SelectValue placeholder="Select location" />
           </SelectTrigger>

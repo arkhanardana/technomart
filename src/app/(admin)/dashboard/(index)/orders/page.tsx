@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { DataTable } from "@/components/ui/data-table";
 import React from "react";
 import { columns } from "./columns";
@@ -18,9 +12,7 @@ export default async function OrdersPage() {
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
           <CardTitle>Orders</CardTitle>
-          <CardDescription>
-            Manage your orders and view their sales performance.
-          </CardDescription>
+          <CardDescription>Manage your orders and view their sales performance.</CardDescription>
         </CardHeader>
         <CardContent>
           <DataTable columns={columns} data={orders} />

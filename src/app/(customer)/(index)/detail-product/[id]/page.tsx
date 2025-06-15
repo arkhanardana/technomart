@@ -7,11 +7,7 @@ import { redirect } from "next/navigation";
 import PriceInfo from "../_components/price-info";
 import { getUser } from "@/lib/auth";
 
-export default async function DetailProduct({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function DetailProduct({ params }: { params: { id: string } }) {
   const { session } = await getUser();
   const product = await getProductsDetails(Number.parseInt(params.id));
 
@@ -24,23 +20,14 @@ export default async function DetailProduct({
       <header className="bg-[#EFF3FA] pt-[30px] h-[480px] -mb-[310px]">
         <Navbar />
       </header>
-      <div
-        id="title"
-        className="container max-w-[1130px] mx-auto flex items-center justify-between"
-      >
+      <div id="title" className="container max-w-[1130px] mx-auto flex items-center justify-between">
         <div className="flex flex-col gap-5">
           <div className="flex gap-5 items-center">
-            <a className="page text-sm text-[#6A7789] last-of-type:text-black">
-              Shop
-            </a>
+            <a className="page text-sm text-[#6A7789] last-of-type:text-black">Shop</a>
             <span className="text-sm text-[#6A7789]">/</span>
-            <a className="page text-sm text-[#6A7789] last-of-type:text-black">
-              Browse
-            </a>
+            <a className="page text-sm text-[#6A7789] last-of-type:text-black">Browse</a>
             <span className="text-sm text-[#6A7789]">/</span>
-            <a className="page text-sm text-[#6A7789] last-of-type:text-black">
-              Details
-            </a>
+            <a className="page text-sm text-[#6A7789] last-of-type:text-black">Details</a>
           </div>
           <h1 className="font-bold text-4xl leading-9">{product.name}</h1>
         </div>
@@ -106,10 +93,7 @@ export default async function DetailProduct({
           </p>
         </div>
       </div>
-      <div
-        id="details-info"
-        className="container max-w-[1030px] mx-auto flex justify-between gap-5 mt-[50px]"
-      >
+      <div id="details-info" className="container max-w-[1030px] mx-auto flex justify-between gap-5 mt-[50px]">
         <div className="max-w-[650px] w-full flex flex-col gap-[30px]">
           <div id="about" className="flex flex-col gap-[10px]">
             <h3 className="font-semibold">About Product</h3>
@@ -137,21 +121,14 @@ export default async function DetailProduct({
                   </div>
                 </div>
                 <p className="line-clamp-2 hover:line-clamp-none leading-[28px]">
-                  I do really love this product helped me to achieve my first
-                  million Lorem ipsum dolor sit amet.
+                  I do really love this product helped me to achieve my first million Lorem ipsum dolor sit amet.
                 </p>
                 <div className="flex items-center gap-[10px]">
                   <div className="w-[50px] h-[50px] flex shrink-0 rounded-full p-1 border border-[#E5E5E5] overflow-hidden">
-                    <img
-                      src="/assets/photos/p2.png"
-                      className="w-full h-full object-cover rounded-full"
-                      alt="photo"
-                    />
+                    <img src="/assets/photos/p2.png" className="w-full h-full object-cover rounded-full" alt="photo" />
                   </div>
                   <div className="flex flex-col gap-[2px]">
-                    <p className="font-semibold text-sm leading-[22px]">
-                      Angga Risky
-                    </p>
+                    <p className="font-semibold text-sm leading-[22px]">Angga Risky</p>
                     <p className="text-xs leading-[18px]">12 January 2028</p>
                   </div>
                 </div>
@@ -175,21 +152,14 @@ export default async function DetailProduct({
                   </div>
                 </div>
                 <p className="line-clamp-2 hover:line-clamp-none leading-[28px]">
-                  I do really love this product helped me to achieve my first
-                  million Lorem ipsum dolor sit amet.
+                  I do really love this product helped me to achieve my first million Lorem ipsum dolor sit amet.
                 </p>
                 <div className="flex items-center gap-[10px]">
                   <div className="w-[50px] h-[50px] flex shrink-0 rounded-full p-1 border border-[#E5E5E5] overflow-hidden">
-                    <img
-                      src="/assets/photos/p4.png"
-                      className="w-full h-full object-cover rounded-full"
-                      alt="photo"
-                    />
+                    <img src="/assets/photos/p4.png" className="w-full h-full object-cover rounded-full" alt="photo" />
                   </div>
                   <div className="flex flex-col gap-[2px]">
-                    <p className="font-semibold text-sm leading-[22px]">
-                      Sarifuding
-                    </p>
+                    <p className="font-semibold text-sm leading-[22px]">Sarifuding</p>
                     <p className="text-xs leading-[18px]">12 January 2028</p>
                   </div>
                 </div>
@@ -213,21 +183,14 @@ export default async function DetailProduct({
                   </div>
                 </div>
                 <p className="line-clamp-2 hover:line-clamp-none leading-[28px]">
-                  I do really love this product helped me to achieve my first
-                  million Lorem ipsum dolor sit amet.
+                  I do really love this product helped me to achieve my first million Lorem ipsum dolor sit amet.
                 </p>
                 <div className="flex items-center gap-[10px]">
                   <div className="w-[50px] h-[50px] flex shrink-0 rounded-full p-1 border border-[#E5E5E5] overflow-hidden">
-                    <img
-                      src="/assets/photos/p3.png"
-                      className="w-full h-full object-cover rounded-full"
-                      alt="photo"
-                    />
+                    <img src="/assets/photos/p3.png" className="w-full h-full object-cover rounded-full" alt="photo" />
                   </div>
                   <div className="flex flex-col gap-[2px]">
-                    <p className="font-semibold text-sm leading-[22px]">
-                      Ika Nurina
-                    </p>
+                    <p className="font-semibold text-sm leading-[22px]">Ika Nurina</p>
                     <p className="text-xs leading-[18px]">12 January 2028</p>
                   </div>
                 </div>
@@ -251,21 +214,14 @@ export default async function DetailProduct({
                   </div>
                 </div>
                 <p className="line-clamp-2 hover:line-clamp-none leading-[28px]">
-                  I do really love this product helped me to achieve my first
-                  million Lorem ipsum dolor sit amet.
+                  I do really love this product helped me to achieve my first million Lorem ipsum dolor sit amet.
                 </p>
                 <div className="flex items-center gap-[10px]">
                   <div className="w-[50px] h-[50px] flex shrink-0 rounded-full p-1 border border-[#E5E5E5] overflow-hidden">
-                    <img
-                      src="/assets/photos/p1.png"
-                      className="w-full h-full object-cover rounded-full"
-                      alt="photo"
-                    />
+                    <img src="/assets/photos/p1.png" className="w-full h-full object-cover rounded-full" alt="photo" />
                   </div>
                   <div className="flex flex-col gap-[2px]">
-                    <p className="font-semibold text-sm leading-[22px]">
-                      Sami Mami
-                    </p>
+                    <p className="font-semibold text-sm leading-[22px]">Sami Mami</p>
                     <p className="text-xs leading-[18px]">12 January 2028</p>
                   </div>
                 </div>
@@ -289,21 +245,14 @@ export default async function DetailProduct({
                   </div>
                 </div>
                 <p className="line-clamp-2 hover:line-clamp-none leading-[28px]">
-                  I do really love this product helped me to achieve my first
-                  million Lorem ipsum dolor sit amet.
+                  I do really love this product helped me to achieve my first million Lorem ipsum dolor sit amet.
                 </p>
                 <div className="flex items-center gap-[10px]">
                   <div className="w-[50px] h-[50px] flex shrink-0 rounded-full p-1 border border-[#E5E5E5] overflow-hidden">
-                    <img
-                      src="/assets/photos/p2.png"
-                      className="w-full h-full object-cover rounded-full"
-                      alt="photo"
-                    />
+                    <img src="/assets/photos/p2.png" className="w-full h-full object-cover rounded-full" alt="photo" />
                   </div>
                   <div className="flex flex-col gap-[2px]">
-                    <p className="font-semibold text-sm leading-[22px]">
-                      Baronia
-                    </p>
+                    <p className="font-semibold text-sm leading-[22px]">Baronia</p>
                     <p className="text-xs leading-[18px]">12 January 2028</p>
                   </div>
                 </div>

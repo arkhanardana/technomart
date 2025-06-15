@@ -25,10 +25,7 @@ export default function CheckOutForm() {
   const { products } = useCart();
 
   const grandTotal = useMemo(() => {
-    return products.reduce(
-      (prev, curr) => prev + curr.price * curr.quantity,
-      0
-    );
+    return products.reduce((prev, curr) => prev + curr.price * curr.quantity, 0);
   }, [products]);
 
   const postOrderParams = (_: unknown, formData: FormData) =>
@@ -43,9 +40,7 @@ export default function CheckOutForm() {
         className="container max-w-[1130px] mx-auto flex justify-between gap-5 mt-[50px] pb-[100px]"
       >
         <div className="w-[650px] flex flex-col shrink-0 gap-4 h-fit">
-          <h2 className="font-bold text-2xl leading-[34px] pt-16">
-            Your Shipping Address
-          </h2>
+          <h2 className="font-bold text-2xl leading-[34px] pt-16">Your Shipping Address</h2>
           <div className="flex flex-col gap-4 p-[30px] rounded-3xl border border-[#E5E5E5] bg-white">
             {state.error !== "" && (
               <div className="pb-2">
@@ -138,9 +133,7 @@ export default function CheckOutForm() {
           </div>
         </div>
         <div className="flex flex-1 flex-col shrink-0 gap-4 h-fit">
-          <h2 className="font-bold text-2xl leading-[34px] pt-16">
-            Payment Details
-          </h2>
+          <h2 className="font-bold text-2xl leading-[34px] pt-16">Payment Details</h2>
           <div className="w-full bg-white border border-[#E5E5E5] flex flex-col gap-[30px] p-[30px] rounded-3xl">
             <a href="">
               <div className="w-full bg-white border border-[#E5E5E5] flex items-center justify-between gap-2 p-5 rounded-3xl">

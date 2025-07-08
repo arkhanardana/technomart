@@ -5,10 +5,7 @@ import { schemaLocation } from "@/lib/schema";
 import { ActionResult } from "@/types";
 import { redirect } from "next/navigation";
 
-export async function postLocation(
-  _: unknown,
-  formData: FormData
-): Promise<ActionResult> {
+export async function postLocation(_: unknown, formData: FormData): Promise<ActionResult> {
   const validated = schemaLocation.safeParse({ name: formData.get("name") });
 
   if (!validated.success) {

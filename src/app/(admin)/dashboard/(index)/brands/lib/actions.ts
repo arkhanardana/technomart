@@ -6,10 +6,7 @@ import { deleteFile, uploadImage } from "@/lib/supabase";
 import { ActionResult } from "@/types";
 import { redirect } from "next/navigation";
 
-export async function postBrand(
-  _: unknown,
-  formData: FormData
-): Promise<ActionResult> {
+export async function postBrand(_: unknown, formData: FormData): Promise<ActionResult> {
   const validated = schemaBrand.safeParse({
     name: formData.get("name"),
     image: formData.get("image"),

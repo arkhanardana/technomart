@@ -20,22 +20,15 @@ export default async function ListCategory() {
         </Link>
       </div>
       <div className="grid grid-cols-4 gap-[30px]">
-        {categories.map((item) => (
-          <Link key={`${item.name + item.id}`} href="#">
+        {categories.map((category) => (
+          <Link key={`${category.name + category.id}`} href="#">
             <div className="bg-white flex items-center gap-[14px] p-5 rounded-[20px] ring-1 ring-[#E5E5E5] hover:ring-2 hover:ring-[#FFC736] transition-all duration-300 w-full">
               <div className="w-12 h-12 flex shrink-0 rounded-full bg-[#0D5CD7] items-center justify-center overflow-hidden">
-                <Image
-                  src="assets/icons/mobile.svg"
-                  alt="icon"
-                  width={18}
-                  height={18}
-                />
+                <Image src="assets/icons/mobile.svg" alt="icon" width={18} height={18} />
               </div>
               <div className="flex flex-col gap-[2px]">
-                <p className="font-semibold leading-[22px]">{item.name}</p>
-                <p className="text-sm text-[#616369]">
-                  {item._count.products} products
-                </p>
+                <p className="font-semibold leading-[22px]">{category.name}</p>
+                <p className="text-sm text-[#616369]">{category._count.products} products</p>
               </div>
             </div>
           </Link>

@@ -69,7 +69,8 @@ export async function postOrder(
       data,
     });
 
-    redirectPaymentUrl = response.actions?.find((value) => value.urlType === "DEEPLINK")?.url ?? "";
+    redirectPaymentUrl =
+      response.actions?.find((value) => value.urlType === "DEEPLINK")?.url ?? "";
 
     const queryProductOrder: Prisma.OrderProductCreateManyInput[] = [];
 

@@ -28,12 +28,7 @@ export const columns: ColumnDef<Brand>[] = [
 
       return (
         <div className="inline-flex items-center gap-5">
-          <Image
-            src={getImageUrl(brand.logo)}
-            alt={brand.name}
-            width={80}
-            height={80}
-          />
+          <Image src={getImageUrl(brand.logo)} alt={brand.name} width={80} height={80} />
           <span>{brand.name}</span>
         </div>
       );
@@ -70,8 +65,7 @@ export const columns: ColumnDef<Brand>[] = [
               </AlertDialogHeader>
 
               <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete the
-                brand.
+                This action cannot be undone. This will permanently delete the brand.
               </AlertDialogDescription>
 
               <AlertDialogFooter>

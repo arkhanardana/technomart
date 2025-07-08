@@ -2,6 +2,7 @@ import { getUser } from "@/lib/auth";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Notif from "./notif";
 
 export default async function Navbar() {
   const { session, user } = await getUser();
@@ -9,12 +10,7 @@ export default async function Navbar() {
   return (
     <nav className="container max-w-[1130px] mx-auto flex items-center justify-between bg-[#0D5CD7] p-5 rounded-3xl">
       <div className="flex shrink-0">
-        <Image
-          src="/assets/logos/logo.svg"
-          alt="icon"
-          width={100}
-          height={100}
-        />
+        <Image src="/assets/logos/logo.svg" alt="icon" width={100} height={100} />
       </div>
       <ul className="flex items-center gap-[30px]">
         <li className="hover:font-bold hover:text-[#FFC736] transition-all duration-300 font-bold text-[#FFC736]">
@@ -38,7 +34,9 @@ export default async function Navbar() {
               alt="icon"
               width={48}
               height={48}
+              className="absolute"
             />
+            <Notif />
           </div>
         </Link>
         {session && user.role === "customer" ? (

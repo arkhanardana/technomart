@@ -8,10 +8,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
 
-export async function signIn(
-  _: unknown,
-  formData: FormData
-): Promise<ActionResult> {
+export async function signIn(_: unknown, formData: FormData): Promise<ActionResult> {
   const validate = schemaSignIn.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -36,10 +33,7 @@ export async function signIn(
     };
   }
 
-  const comparePassword = bcrypt.compareSync(
-    validate.data.password,
-    existingUser.password
-  );
+  const comparePassword = bcrypt.compareSync(validate.data.password, existingUser.password);
 
   if (!comparePassword) {
     return {
@@ -49,19 +43,12 @@ export async function signIn(
 
   const session = await lucia.createSession(existingUser.id, {});
   const sessionCookie = lucia.createSessionCookie(session.id);
-  cookies().set(
-    sessionCookie.name,
-    sessionCookie.value,
-    sessionCookie.attributes
-  );
+  cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
 
   return redirect("/");
 }
 
-export async function signUp(
-  _: unknown,
-  formData: FormData
-): Promise<ActionResult> {
+export async function signUp(_: unknown, formData: FormData): Promise<ActionResult> {
   const validated = schemaSignUp.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
@@ -92,7 +79,7 @@ export async function signUp(
       switch (error.code) {
         case "P2002":
           return {
-            error: "An account with this email already exists",
+            error: "An account wit  h this email already exists",
           };
         case "P2000":
           return {

@@ -25,7 +25,9 @@ export default function CartProducts() {
           </div>
           <div className="w-[150px] flex flex-col gap-1">
             <p className="text-sm text-[#616369]">Price</p>
-            <p className="font-semibold text-[#0D5CD7] leading-[22px]">{rupiahFormat(cart.price)}</p>
+            <p className="font-semibold text-[#0D5CD7] leading-[22px]">
+              {rupiahFormat(cart.price)}
+            </p>
           </div>
           <div className="w-[120px] flex flex-col gap-1">
             <p className="text-sm text-[#616369]">Quantity</p>
@@ -39,14 +41,20 @@ export default function CartProducts() {
                 <img src="assets/icons/minus-cirlce.svg" alt="minus" />
               </button>
               <p className="text-[#0D5CD7] font-semibold leading-[22px]">{cart.quantity}</p>
-              <button type="button" onClick={() => incQuantity(cart.id)} className="w-6 h-6 flex shrink-0">
+              <button
+                type="button"
+                onClick={() => incQuantity(cart.id)}
+                className="w-6 h-6 flex shrink-0"
+              >
                 <img src="assets/icons/add-circle.svg" alt="plus" />
               </button>
             </div>
           </div>
           <div className="w-[150px] flex flex-col gap-1">
             <p className="text-sm text-[#616369]">Total</p>
-            <p className="font-semibold text-[#0D5CD7] leading-[22px]">{rupiahFormat(cart.price * cart.quantity)}</p>
+            <p className="font-semibold text-[#0D5CD7] leading-[22px]">
+              {rupiahFormat(cart.price * cart.quantity)}
+            </p>
           </div>
           <button
             type="button"

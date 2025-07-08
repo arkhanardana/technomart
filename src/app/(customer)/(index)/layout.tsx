@@ -15,8 +15,8 @@ export default async function CustomerLayout({ children }: Readonly<{ children: 
     return redirect("/dashboard");
   }
   return (
-    <main>
+    <>
       <div className={poppins.className}>{children}</div>
-    </main>
+    </>
   );
 }

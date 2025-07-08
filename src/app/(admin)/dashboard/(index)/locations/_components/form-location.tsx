@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { AlertCircle, ChevronLeft } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -34,10 +33,7 @@ function SubmitButton() {
   );
 }
 
-export default function FormLocation({
-  type = "ADD",
-  data = null,
-}: FormLocationProps) {
+export default function FormLocation({ type = "ADD", data = null }: FormLocationProps) {
   const updateLocationWithId = (_: unknown, formData: FormData) =>
     updateLocation(_, formData, data?.id);
 
@@ -55,9 +51,7 @@ export default function FormLocation({
             <span className="sr-only">Back</span>
           </Link>
         </Button>
-        <h1 className="text-xl font-semibold tracking-tight truncate">
-          Location Controller
-        </h1>
+        <h1 className="text-xl font-semibold tracking-tight truncate">Location Controller</h1>
       </div>
 
       <div className="grid gap-6 max-w-2xl">

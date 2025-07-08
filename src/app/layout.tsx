@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import { GeistSans } from "geist/font/sans";
 
-const inter = Inter({ subsets: ["latin"] });
+const geist = GeistSans;
 
 export const metadata: Metadata = {
   title: "Technomart",
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={geist.className}>
         {children}
         <Toaster />
       </body>

@@ -8,7 +8,10 @@ export default function CartProducts() {
   const { products, decQuantity, incQuantity, removeProduct } = useCart();
 
   return (
-    <div id="cart" className="container max-w-[1130px] mx-auto flex flex-col gap-5 mt-[50px]">
+    <div
+      id="cart"
+      className="container max-w-[1130px] mx-auto flex flex-col gap-5 mt-[50px]"
+    >
       {products.map((cart) => (
         <div
           key={cart.id + cart.name}

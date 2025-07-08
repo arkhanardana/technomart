@@ -4,6 +4,7 @@ import React, { Suspense } from "react";
 import ListCategory from "./_components/list-category";
 import ListProducts from "./_components/list-products";
 import ListBrands from "./_components/list-brands";
+import Loading from "@/app/(admin)/dashboard/(index)/categories/loading";
 
 export default function CustomerLandingPage() {
   return (
@@ -14,24 +15,15 @@ export default function CustomerLandingPage() {
           <div className="flex flex-col gap-[30px]">
             <div className="flex items-center gap-[10px] p-[8px_16px] rounded-full bg-white w-fit">
               <div className="w-[22px] h-[22px] flex shrink-0">
-                <Image
-                  src="/assets/icons/crown.svg"
-                  alt="icon"
-                  width={22}
-                  height={22}
-                />
+                <Image src="/assets/icons/crown.svg" alt="icon" width={22} height={22} />
               </div>
-              <p className="font-semibold text-sm">
-                Most Popular 100th Product in Technomart
-              </p>
+              <p className="font-semibold text-sm">Most Popular 100th Product in Technomart</p>
             </div>
             <div className="flex flex-col gap-[14px]">
-              <h1 className="font-bold text-[55px] leading-[55px]">
-                Working Faster 10x
-              </h1>
+              <h1 className="font-bold text-[55px] leading-[55px]">Working Faster 10x</h1>
               <p className="text-lg leading-[34px] text-[#6A7789]">
-                Dolor si amet lorem super-power features riches than any other
-                platform devices AI integrated.
+                Dolor si amet lorem super-power features riches than any other platform devices
+                AI integrated.
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -41,10 +33,7 @@ export default function CustomerLandingPage() {
               >
                 Add to Cart
               </a>
-              <a
-                href=""
-                className="p-[18px_24px] rounded-full font-semibold bg-white"
-              >
+              <a href="" className="p-[18px_24px] rounded-full font-semibold bg-white">
                 View Details
               </a>
             </div>
@@ -99,9 +88,7 @@ export default function CustomerLandingPage() {
               />
             </div>
             <div className="flex flex-col gap-[2px]">
-              <p className="font-semibold text-sm leading-[22px]">
-                Awesome product!
-              </p>
+              <p className="font-semibold text-sm leading-[22px]">Awesome product!</p>
               <p className="text-xs leading-[18px]">Jemmie Pemilia</p>
             </div>
           </div>
@@ -116,9 +103,7 @@ export default function CustomerLandingPage() {
               />
             </div>
             <div className="flex flex-col gap-[2px]">
-              <p className="font-semibold text-sm leading-[22px]">
-                Money saver 25%
-              </p>
+              <p className="font-semibold text-sm leading-[22px]">Money saver 25%</p>
               <p className="text-xs leading-[18px]">Angga Risky</p>
             </div>
           </div>
@@ -133,9 +118,7 @@ export default function CustomerLandingPage() {
               />
             </div>
             <div className="flex flex-col gap-[2px]">
-              <p className="font-semibold text-sm leading-[22px]">
-                I love the warranty
-              </p>
+              <p className="font-semibold text-sm leading-[22px]">I love the warranty</p>
               <p className="text-xs leading-[18px]">Petina Malaka</p>
             </div>
           </div>
@@ -150,9 +133,7 @@ export default function CustomerLandingPage() {
               />
             </div>
             <div className="flex flex-col gap-[2px]">
-              <p className="font-semibold text-sm leading-[22px]">
-                Big deals ever!
-              </p>
+              <p className="font-semibold text-sm leading-[22px]">Big deals ever!</p>
               <p className="text-xs leading-[18px]">Udin Sarifun</p>
             </div>
           </div>
@@ -162,10 +143,10 @@ export default function CustomerLandingPage() {
         id="content"
         className="container max-w-[1130px] mx-auto flex flex-col gap-[50px] pt-[50px] pb-[100px]"
       >
-        <Suspense fallback={<span>Loading...</span>}>
+        <Suspense fallback={<Loading />}>
           <ListCategory />
         </Suspense>
-        <Suspense fallback={<span>Loading...</span>}>
+        <Suspense fallback={<Loading />}>
           <ListProducts
             title={
               <span>
@@ -175,11 +156,11 @@ export default function CustomerLandingPage() {
           />
         </Suspense>
 
-        <Suspense fallback={<span>Loading...</span>}>
+        <Suspense fallback={<Loading />}>
           <ListBrands />
         </Suspense>
 
-        <Suspense fallback={<span>Loading...</span>}>
+        <Suspense fallback={<Loading />}>
           <ListProducts
             title={
               <span>

@@ -1,15 +1,12 @@
-import Navbar from "@/components/navbar";
 import Link from "next/link";
 import React from "react";
 import CartProducts from "./_components/cart-products";
 import CheckOutForm from "./_components/checkout-form";
+import EmptyCart from "./_components/empty-cart";
 
 export default function CartsPage() {
   return (
-    <div>
-      <header className="bg-[#EFF3FA] pt-[30px] h-[480px] -mb-[310px]">
-        <Navbar />
-      </header>
+    <>
       <div
         id="title"
         className="container max-w-[1130px] mx-auto flex items-center justify-between"
@@ -31,8 +28,10 @@ export default function CartsPage() {
           <h1 className="font-bold text-4xl leading-9">My Shopping Cart</h1>
         </div>
       </div>
+
+      <EmptyCart />
       <CartProducts />
       <CheckOutForm />
-    </div>
+    </>
   );
 }

@@ -8,7 +8,10 @@ import xenditClient from "@/lib/xendit";
 import { ActionResult, TCart } from "@/types";
 import { Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
-import { PaymentRequestParameters, PaymentRequest } from "xendit-node/payment_request/models";
+import {
+  PaymentRequestParameters,
+  PaymentRequest,
+} from "xendit-node/payment_request/models";
 
 export async function postOrder(
   _: unknown,
@@ -65,9 +68,11 @@ export async function postOrder(
       referenceId: order.code,
     };
 
-    const response: PaymentRequest = await xenditClient.PaymentRequest.createPaymentRequest({
-      data,
-    });
+    const response: PaymentRequest = await xenditClient.PaymentRequest.createPaymentRequest(
+      {
+        data,
+      }
+    );
 
     redirectPaymentUrl =
       response.actions?.find((value) => value.urlType === "DEEPLINK")?.url ?? "";

@@ -22,23 +22,23 @@ export default async function ProductsPage() {
         <Button size="sm" className="h-8 gap-1" asChild>
           <Link href="/dashboard/products/create">
             <PlusCircle className="h-3.5 w-3.5" />
-            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-              Add product
-            </span>
+            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">Add product</span>
           </Link>
         </Button>
       </div>
-      <Card x-chunk="dashboard-06-chunk-0">
-        <CardHeader>
-          <CardTitle>Products</CardTitle>
-          <CardDescription>
-            Manage your products and view their sales performance.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <DataTable columns={columns} data={products} />
-        </CardContent>
-      </Card>
+      <div className="lg:pl-52">
+        <Card>
+          <CardHeader>
+            <CardTitle>Products</CardTitle>
+            <CardDescription>
+              Manage your products and view their sales performance.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DataTable columns={columns} data={products} />
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

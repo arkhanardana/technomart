@@ -64,6 +64,7 @@ export async function deleteLocation(id: number) {
       },
     });
   } catch (error) {
+    console.log(error);
     return {
       error: "Failed to delete location",
     };

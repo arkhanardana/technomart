@@ -12,8 +12,7 @@ export default async function EditPage({ params }: Params<{ id: string }>) {
   }
 
   return (
-    <div>
-      <h1>Edit Page</h1>
+    <div className="lg:pl-52">
       <FormLocation data={data} type="EDIT" />
     </div>
   );

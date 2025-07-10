@@ -12,7 +12,7 @@ export default async function EditPage({ params }: Params<{ id: string }>) {
   }
 
   return (
-    <div>
+    <div className="lg:pl-52">
       <FormBrand data={data} type="EDIT" />
     </div>
   );

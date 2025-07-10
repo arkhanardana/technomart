@@ -14,6 +14,7 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
+  AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
@@ -47,14 +48,13 @@ export const columns: ColumnDef<Category>[] = [
 
             <AlertDialogContent>
               <AlertDialogHeader>
-                <h2 className="text-lg font-medium">
+                <AlertDialogTitle>
                   Are you sure you want to delete this category?
-                </h2>
+                </AlertDialogTitle>
               </AlertDialogHeader>
 
               <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete the
-                category.
+                This action cannot be undone. This will permanently delete the category.
               </AlertDialogDescription>
 
               <AlertDialogFooter>

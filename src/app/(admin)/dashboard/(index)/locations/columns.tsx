@@ -14,8 +14,10 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
+  AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { useRouter } from "next/navigation";
 
 export const columns: ColumnDef<Location>[] = [
   {
@@ -47,14 +49,13 @@ export const columns: ColumnDef<Location>[] = [
 
             <AlertDialogContent>
               <AlertDialogHeader>
-                <h2 className="text-lg font-medium">
+                <AlertDialogTitle>
                   Are you sure you want to delete this location?
-                </h2>
+                </AlertDialogTitle>
               </AlertDialogHeader>
 
               <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete the
-                location.
+                This action cannot be undone. This will permanently delete the location.
               </AlertDialogDescription>
 
               <AlertDialogFooter>

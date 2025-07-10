@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { AlertCircle, ChevronLeft } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -34,10 +33,7 @@ function SubmitButton() {
   );
 }
 
-export default function FormCategory({
-  type = "ADD",
-  data = null,
-}: FormCategoryProps) {
+export default function FormCategory({ type = "ADD", data = null }: FormCategoryProps) {
   const updateCategoryWithId = (_: unknown, formData: FormData) =>
     updateCategory(_, formData, data?.id);
 

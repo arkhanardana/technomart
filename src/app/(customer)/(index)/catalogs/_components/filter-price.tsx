@@ -15,7 +15,7 @@ export default function FilterPrice() {
     }, 1000);
 
     return () => clearTimeout(debounceInput);
-  }, [minPrice]);
+  }, [minPrice, setFilter]);
 
   useEffect(() => {
     const debounceInput = setTimeout(() => {
@@ -25,7 +25,7 @@ export default function FilterPrice() {
     }, 1000);
 
     return () => clearTimeout(debounceInput);
-  }, [maxPrice]);
+  }, [maxPrice, setFilter]);
 
   return (
     <div className="flex flex-col gap-[14px]">

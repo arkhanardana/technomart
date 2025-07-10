@@ -28,17 +28,19 @@ export default async function CategoriesPage() {
           </Link>
         </Button>
       </div>
-      <Card x-chunk="dashboard-06-chunk-0">
-        <CardHeader>
-          <CardTitle>Categories</CardTitle>
-          <CardDescription>
-            Manage your categories and view their sales performance.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <DataTable columns={columns} data={categories} />
-        </CardContent>
-      </Card>
+      <div className="lg:pl-52">
+        <Card>
+          <CardHeader>
+            <CardTitle>Categories</CardTitle>
+            <CardDescription>
+              Manage your categories and view their sales performance.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DataTable columns={columns} data={categories} />
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

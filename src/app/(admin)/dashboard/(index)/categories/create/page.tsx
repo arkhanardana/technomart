@@ -2,7 +2,7 @@ import FormCategory from "../_components/form-category";
 
 export default function CreateCategory() {
   return (
-    <div>
+    <div className="lg:pl-52">
       <FormCategory />
     </div>
   );

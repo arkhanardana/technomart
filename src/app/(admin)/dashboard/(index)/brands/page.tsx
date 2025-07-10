@@ -17,28 +17,29 @@ export default async function BrandsPage() {
   const brands = await getBrands();
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 container mx-auto">
       <div className="text-right">
         <Button size="sm" className="h-8 gap-1" asChild>
           <Link href="/dashboard/brands/create">
             <PlusCircle className="h-3.5 w-3.5" />
-            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-              Add brand
-            </span>
+            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">Add brand</span>
           </Link>
         </Button>
       </div>
-      <Card x-chunk="dashboard-06-chunk-0">
-        <CardHeader>
-          <CardTitle>Brands</CardTitle>
-          <CardDescription>
-            Manage your brands and view their sales performance.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <DataTable columns={columns} data={brands} />
-        </CardContent>
-      </Card>
+
+      <div className="lg:pl-52">
+        <Card className="w-full">
+          <CardHeader>
+            <CardTitle>Brands</CardTitle>
+            <CardDescription>
+              Manage your brands and view their sales performance.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DataTable columns={columns} data={brands} />
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

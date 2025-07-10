@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import {
   Tag,
@@ -9,114 +11,125 @@ import {
   Package2,
   ShoppingCart,
   Users2,
+  Menu,
+  Rabbit,
 } from "lucide-react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import FormLogout from "./form-logout";
 
 export default function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpenSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleCloseSidebar = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <TooltipProvider>
-      <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
-        <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
+    <>
+      {/* Mobile Menu Button */}
+      {!isOpen && (
+        <button
+          onClick={handleOpenSidebar}
+          className="fixed top-4 left-4 z-50 p-2 rounded-lg bg-blue-600 text-white shadow-lg sm:hidden"
+        >
+          <Menu className="h-6 w-6" />
+        </button>
+      )}
+
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-20 bg-black bg-opacity-50 sm:hidden"
+          onClick={handleCloseSidebar}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed inset-y-0 left-0 z-30 w-64 flex-col border-r border-gray-200 bg-white shadow-sm transition-transform duration-300 ease-in-out sm:flex ${
+          isOpen ? "flex translate-x-0" : "hidden -translate-x-full sm:translate-x-0"
+        }`}
+      >
+        <nav className="flex flex-col gap-2 px-4 py-6">
           <Link
             href="#"
-            className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
+            className="flex h-12 items-center gap-3 rounded-lg bg-blue-600 px-4 text-white"
+            onClick={handleCloseSidebar}
           >
-            <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
-            <span className="sr-only">Acme Inc</span>
+            <Package2 className="h-5 w-5" />
+            <span className="text-base font-semibold">Techno Mart</span>
           </Link>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <Home className="h-5 w-5" />
-                <span className="sr-only">Dashboard</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Dashboard</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href="/dashboard/categories"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <Tag className="h-5 w-5" />
-                <span className="sr-only">Categories</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Categories</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href="/dashboard/locations"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <MapPin className="h-5 w-5" />
-                <span className="sr-only">Locations</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Locations</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href="/dashboard/brands"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <Building className="h-5 w-5" />
-                <span className="sr-only">Brands</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Brands</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href="/dashboard/products"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <Package className="h-5 w-5" />
-                <span className="sr-only">Products</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Products</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href="/dashboard/orders"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <ShoppingCart className="h-5 w-5" />
-                <span className="sr-only">Orders</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Orders</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href="/dashboard/customers"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <Users2 className="h-5 w-5" />
-                <span className="sr-only">Customers</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Customers</TooltipContent>
-          </Tooltip>
+
+          <div className="w-full h-px bg-gray-200 my-3" />
+
+          <Link
+            href="#"
+            className="flex h-10 w-full items-center gap-3 rounded-lg px-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+            onClick={handleCloseSidebar}
+          >
+            <Home className="h-5 w-5" />
+            <span className="text-sm font-medium">Dashboard</span>
+          </Link>
+
+          <Link
+            href="/dashboard/categories"
+            className="flex h-10 w-full items-center gap-3 rounded-lg px-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+            onClick={handleCloseSidebar}
+          >
+            <Tag className="h-5 w-5" />
+            <span className="text-sm font-medium">Categories</span>
+          </Link>
+
+          <Link
+            href="/dashboard/locations"
+            className="flex h-10 w-full items-center gap-3 rounded-lg px-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+            onClick={handleCloseSidebar}
+          >
+            <MapPin className="h-5 w-5" />
+            <span className="text-sm font-medium">Locations</span>
+          </Link>
+
+          <Link
+            href="/dashboard/brands"
+            className="flex h-10 w-full items-center gap-3 rounded-lg px-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+            onClick={handleCloseSidebar}
+          >
+            <Building className="h-5 w-5" />
+            <span className="text-sm font-medium">Brands</span>
+          </Link>
+
+          <Link
+            href="/dashboard/products"
+            className="flex h-10 w-full items-center gap-3 rounded-lg px-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+            onClick={handleCloseSidebar}
+          >
+            <Package className="h-5 w-5" />
+            <span className="text-sm font-medium">Products</span>
+          </Link>
+
+          <Link
+            href="/dashboard/orders"
+            className="flex h-10 w-full items-center gap-3 rounded-lg px-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+            onClick={handleCloseSidebar}
+          >
+            <ShoppingCart className="h-5 w-5" />
+            <span className="text-sm font-medium">Orders</span>
+          </Link>
+
+          <Link
+            href="/dashboard/customers"
+            className="flex h-10 w-full items-center gap-3 rounded-lg px-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+            onClick={handleCloseSidebar}
+          >
+            <Users2 className="h-5 w-5" />
+            <span className="text-sm font-medium">Customers</span>
+          </Link>
         </nav>
         <FormLogout />
       </aside>
-    </TooltipProvider>
+    </>
   );
 }

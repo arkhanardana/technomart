@@ -14,8 +14,8 @@ export default async function CustomerPage() {
   const customers = await getAllCustomers();
 
   return (
-    <div className="space-y-4">
-      <Card x-chunk="dashboard-06-chunk-0">
+    <div className="space-y-4 lg:pl-52">
+      <Card>
         <CardHeader>
           <CardTitle>Customers</CardTitle>
           <CardDescription>

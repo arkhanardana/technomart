@@ -71,9 +71,7 @@ export default function FormProduct({
               Product Controller
             </h1>
             <div className="hidden items-center gap-2 md:ml-auto md:flex">
-              <Button variant="outline" size="sm">
-                Discard
-              </Button>
+              <Button variant="outline">Discard</Button>
               <SubmitButton />
             </div>
           </div>
@@ -85,9 +83,7 @@ export default function FormProduct({
               >
                 <CardHeader>
                   <CardTitle>Product Details</CardTitle>
-                  <CardDescription>
-                    Please input the product details
-                  </CardDescription>
+                  <CardDescription>Please input the product details</CardDescription>
                 </CardHeader>
                 <CardContent>
                   {state.error !== "" && (

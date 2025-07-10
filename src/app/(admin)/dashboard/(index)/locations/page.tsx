@@ -28,17 +28,19 @@ export default async function LocationsPage() {
           </Link>
         </Button>
       </div>
-      <Card x-chunk="dashboard-06-chunk-0">
-        <CardHeader>
-          <CardTitle>Locations</CardTitle>
-          <CardDescription>
-            Manage your locations and view their sales performance.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <DataTable columns={columns} data={locations} />
-        </CardContent>
-      </Card>
+      <div className="lg:pl-52">
+        <Card>
+          <CardHeader>
+            <CardTitle>Locations</CardTitle>
+            <CardDescription>
+              Manage your locations and view their sales performance.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DataTable columns={columns} data={locations} />
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

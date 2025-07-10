@@ -13,6 +13,7 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
+  AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import Image from "next/image";
@@ -22,14 +23,13 @@ import { deleteBrand } from "./lib/actions";
 export const columns: ColumnDef<Brand>[] = [
   {
     accessorKey: "name",
-    header: "Name",
+    header: "Products",
     cell: ({ row }) => {
       const brand = row.original;
 
       return (
         <div className="inline-flex items-center gap-5">
           <Image src={getImageUrl(brand.logo)} alt={brand.name} width={80} height={80} />
-          <span>{brand.name}</span>
         </div>
       );
     },
@@ -59,9 +59,9 @@ export const columns: ColumnDef<Brand>[] = [
 
             <AlertDialogContent>
               <AlertDialogHeader>
-                <h2 className="text-lg font-medium">
+                <AlertDialogTitle>
                   Are you sure you want to delete this brand?
-                </h2>
+                </AlertDialogTitle>
               </AlertDialogHeader>
 
               <AlertDialogDescription>

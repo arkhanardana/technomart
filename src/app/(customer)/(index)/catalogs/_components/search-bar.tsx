@@ -16,7 +16,7 @@ export default function SearchBar() {
     }, 1000);
 
     return () => clearTimeout(debounceInput);
-  }, [searchQuery]);
+  }, [searchQuery, setFilter]);
 
   return (
     <div
@@ -25,24 +25,15 @@ export default function SearchBar() {
     >
       <div className="flex flex-col gap-5">
         <div className="flex gap-5 items-center">
-          <Link
-            href={"#"}
-            className="page text-sm text-[#6A7789] last-of-type:text-black"
-          >
+          <Link href={"#"} className="page text-sm text-[#6A7789] last-of-type:text-black">
             Shop
           </Link>
           <span className="text-sm text-[#6A7789]">/</span>
-          <Link
-            href={"#"}
-            className="page text-sm text-[#6A7789] last-of-type:text-black"
-          >
+          <Link href={"#"} className="page text-sm text-[#6A7789] last-of-type:text-black">
             Browse
           </Link>
           <span className="text-sm text-[#6A7789]">/</span>
-          <Link
-            href={"#"}
-            className="page text-sm text-[#6A7789] last-of-type:text-black"
-          >
+          <Link href={"#"} className="page text-sm text-[#6A7789] last-of-type:text-black">
             Catalog
           </Link>
         </div>

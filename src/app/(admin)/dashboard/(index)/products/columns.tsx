@@ -17,6 +17,7 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
+  AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { deleteProduct } from "./lib/actions";
@@ -109,14 +110,13 @@ export const columns: ColumnDef<TProduct>[] = [
 
             <AlertDialogContent>
               <AlertDialogHeader>
-                <h2 className="text-lg font-medium">
+                <AlertDialogTitle>
                   Are you sure you want to delete this product?
-                </h2>
+                </AlertDialogTitle>
               </AlertDialogHeader>
 
               <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete the
-                product.
+                This action cannot be undone. This will permanently delete the product.
               </AlertDialogDescription>
 
               <AlertDialogFooter>

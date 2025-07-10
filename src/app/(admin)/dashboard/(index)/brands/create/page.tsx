@@ -3,7 +3,7 @@ import FormBrand from "../_components/form-brand";
 
 export default function CreateBrandPage() {
   return (
-    <div>
+    <div className="lg:pl-52">
       <FormBrand />
     </div>
   );

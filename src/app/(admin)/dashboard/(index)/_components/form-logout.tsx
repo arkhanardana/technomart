@@ -1,11 +1,6 @@
 "use client";
 
 import { initialState } from "@/types";
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-} from "@/components/ui/tooltip";
 import { LogOut } from "lucide-react";
 import { useFormState } from "react-dom";
 import { signOut } from "../lib/action";
@@ -14,19 +9,14 @@ export default function FormLogout() {
   const [state, formAction] = useFormState(signOut, initialState);
 
   return (
-    <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
+    <nav className="mt-auto flex flex-col gap-2 px-4 py-4">
       {state.error && <p className="text-sm text-red-500">{state.error}</p>}
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <form action={formAction}>
-            <button className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8">
-              <LogOut className="h-5 w-5" />
-              <span className="sr-only">Logout</span>
-            </button>
-          </form>
-        </TooltipTrigger>
-        <TooltipContent side="right">Logout</TooltipContent>
-      </Tooltip>
+      <form action={formAction}>
+        <button className="flex h-10 w-full items-center gap-3 rounded-lg px-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50">
+          <LogOut className="h-5 w-5" />
+          <span className="text-sm font-medium">Logout</span>
+        </button>
+      </form>
     </nav>
   );
 }
